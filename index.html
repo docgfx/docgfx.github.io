@@ -1,85 +1,267 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>DocGFX</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #0f0f0f;
-      color: white;
-      text-align: center;
-      padding: 40px;
-    }
-    .btn {
-      background: purple;
-      padding: 15px 30px;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      display: inline-block;
-      margin: 20px;
-    }
-    img {
-      width: 280px;
-      margin: 10px;
-      border-radius: 10px;
-    }
-    .section {
-      margin-top: 50px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>DocGFX</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* 🔥 BANNER */
+.banner {
+  width: 100%;
+  height: 300px;
+  background: url("https://cdn.discordapp.com/attachments/1496200606908416030/1496234538353954836/CBB229E5-DC48-4DE6-9FCA-110EB8B41C45.png") center/cover no-repeat;
+}
+
+/* CONTENT */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+/* LOGO */
+.logo {
+  width: 90px;
+  margin-top: -50px;
+}
+
+/* TITLE */
+h1 {
+  font-size: 42px;
+  margin-top: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+/* BUTTON */
+.btn {
+  border: 1px solid white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* ACCORDION */
+.accordion {
+  background: #111;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid #222;
+  text-align: left;
+  font-size: 17px;
+  border-radius: 10px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion:hover {
+  background: #181818;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price {
+  color: #ccc;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.icon {
+  color: #aaa;
+}
+
+.panel {
+  display: none;
+  background: #0a0a0a;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* GRID */
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* VIDEO */
+.video-card {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* IMAGES + GIFS */
+.images img {
+  width: 260px;
+  border-radius: 12px;
+  filter: grayscale(100%);
+  transition: 0.3s;
+}
+
+.images img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+</style>
 </head>
+
 <body>
 
-<h1>🔥 DocGFX</h1>
-<p>High Quality Websites, Logos, Banners & Thumbnails</p>
+<div class="banner"></div>
 
-<a class="btn" href="DEIN_DISCORD_LINK">Open Ticket</a>
+<div class="container">
 
-<!-- 🌐 WEBSITES SHOWCASE -->
-<div class="section">
-<h2>🌐 Websites</h2>
-<p>Our website projects & designs</p>
+<img class="logo" src="https://cdn.discordapp.com/attachments/1496247584531153017/1496247633021243553/IMG_7228.png?ex=69e930b2&is=69e7df32&hm=3c23f78d8df8991a077b266c8ddcb6126735f2feba9172360e6fd5007a71ec5e&">
 
-<h3>Project: Modern Portfolio</h3>
-<img src="https://via.placeholder.com/300">
+<h1>DocGFX</h1>
+<p class="subtitle">Premium Websites, Logos, Banners & Thumbnails</p>
 
-<h3>Project: Gaming Website</h3>
-<img src="https://via.placeholder.com/300">
+<a class="btn" href="https://discord.gg/SNHbWq7hPt">
+  <i class="fa-brands fa-discord"></i>
+  Join Discord
+</a>
 
-<h3>Project: Clean Business Site</h3>
-<img src="https://via.placeholder.com/300">
+<!-- WEBSITES -->
+<button class="accordion">
+  <span class="left">
+    <i class="fa-solid fa-globe icon"></i> Websites
+  </span>
+  <i class="fa-solid fa-chevron-down"></i>
+</button>
+
+<div class="panel">
+  <button class="accordion">
+    <span class="left">
+      Hyper Theme <span class="price">€25</span>
+    </span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
+
+  <div class="panel">
+    <div class="images">
+      <div class="video-card">
+        <iframe src="https://player.vimeo.com/video/1185284072?h=6a34a574dc"
+        allow="autoplay; fullscreen"></iframe>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- 🏷️ LOGOS -->
-<div class="section">
-<h2>🏷️ Logos</h2>
-<p>Custom logos created for clients</p>
-<p>Each logo is uniquely designed based on customer requests.</p>
+<!-- LOGOS -->
+<button class="accordion">
+  <span class="left">
+    <i class="fa-solid fa-pen-nib icon"></i> Logos
+  </span>
+  <i class="fa-solid fa-chevron-down"></i>
+</button>
+
+<div class="panel">
+  <div class="images">
+    <!-- HIER DEINE LOGOS -->
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1403210394495090778/ws_logo.png?ex=69e8e1c4&is=69e79044&hm=dd8c7dfbe8e1a61a7d13e436ef85c15a541735a5666742fe91261e789c47f508&">
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1403210395279294634/Logo.png?ex=69e8e1c4&is=69e79044&hm=37b658188295cebf3e5931ad8902a785f216ecd21bdf48e4ed9500455be81028&">
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1403211131878899845/X-Logo.png?ex=69e8e274&is=69e790f4&hm=8afc9f9a43a2512dc0aedabb7401a6977fe513e87d717b5c1033bd89c5e3493f&">
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1439464035639627899/Sellauth-Logo-EngineX.png?ex=69e8ef9a&is=69e79e1a&hm=5214def87bed80bf220a2428a338f829bd126ef0aa8d413c29adf1f6704c5065&">
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1439464037225201675/Logo-Sharp-No-BG.png?ex=69e8ef9a&is=69e79e1a&hm=04053bf9a1acb782231f56b15a8ddf15e49b15b16aab28cb3a1c31ee818d186e&">
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1439464036117909675/VS-Xmas_no_bg.png?ex=69e8ef9a&is=69e79e1a&hm=eb627a480d978277775f1a61eecd5daf53d86ce5f16885dbe997be7eb20cdd89&">
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1440412914132713674/Final_Comp_2.gif?ex=69e91790&is=69e7c610&hm=d3ebe287d98acba00b9dcc5928c960179fa9a29b923fb947140fecc9096f55e2&">
+    <img src="https://cdn.discordapp.com/attachments/1403170169437683842/1441212813224710225/S.gif?ex=69e8b4c7&is=69e76347&hm=0091b3cf28a4a7efe7a2fe3a0792e5b2f7a104ab2a8392610c2fb7e21564c300&">
+    <img src="https://media.discordapp.net/attachments/1403170169437683842/1496197460832293038/ezgif.com-optimize_19.gif?ex=69e901f8&is=69e7b078&hm=16590b8d6bc1da0c4a1d7b3ba5e45936b1d4fbb41b4b658cac1d9874305ec1e9&=&width=1000&height=1000">
+    
+  </div>
 </div>
 
-<!-- 🖼️ BANNERS -->
-<div class="section">
-<h2>🖼️ Banners</h2>
-<p>Professional banners made for clients</p>
-<p>All designs are customized to fit your style.</p>
+<!-- BANNERS -->
+<button class="accordion">
+  <span class="left">
+    <i class="fa-solid fa-image icon"></i> Banners
+  </span>
+  <i class="fa-solid fa-chevron-down"></i>
+</button>
+
+<div class="panel">
+  <div class="images">
+    <!-- HIER DEINE BANNER -->
+    <img src="https://cdn.discordapp.com/attachments/1427005539094630462/1450843216990703676/DarkChair.gif?ex=69e8ce0a&is=69e77c8a&hm=e17f67ab4c4fe44633b704229aba93364c8b5bbdb37633bb3afac70190493f65&">
+    <img src="https://media.discordapp.net/attachments/1427005539094630462/1479919850577985646/Banner-2.png?ex=69e91dc3&is=69e7cc43&hm=c7f21003b3cf0b3434ec57526da7475e2852fe46ca3e0a351c394f33bcb26394&=&format=webp&quality=lossless&width=1836&height=1032">
+    <img src="https://cdn.discordapp.com/attachments/1427005539094630462/1440970943332618351/EngineX.gif?ex=69e92504&is=69e7d384&hm=44542e5e8bc21c86f22593bd943dae18f1c0eae9b4e58428e91e8a1ab84ee723&">
+    <img src="https://media.discordapp.net/attachments/1427005539094630462/1427006621032124537/Server_Banner_2.gif?ex=69e9197a&is=69e7c7fa&hm=2e0fbc70e34561596f0d2493b737c508cb18a8c11861aa6ba3039f68fa46e9a5&=&width=1100&height=618">
+  </div>
 </div>
 
-<!-- 🎬 THUMBNAILS -->
-<div class="section">
-<h2>🎬 Thumbnails</h2>
-<p>High quality thumbnails for content creators</p>
-<p>Optimized for clicks and engagement.</p>
+<!-- THUMBNAILS -->
+<button class="accordion">
+  <span class="left">
+    <i class="fa-solid fa-video icon"></i> Thumbnails
+  </span>
+  <i class="fa-solid fa-chevron-down"></i>
+</button>
+
+<div class="panel">
+  <div class="images">
+    <!-- PNG/JPG -->
+    <img src="https://cdn.discordapp.com/attachments/1424028192527749201/1424546285595262996/image.png?ex=69e8b7dd&is=69e7665d&hm=c0a52f2f06a36aebbc0294f0d4fe21af4c8dc806b085a35642f76d68a1e9231f&">
+    <img src="https://cdn.discordapp.com/attachments/1424028192527749201/1480634711998201978/thumbn.png?ex=69e91488&is=69e7c308&hm=e0e4b2beda891a05ae2638c004ab98168377eea993b56e13e4eebe49b21bfb20&">
+    <img src="https://cdn.discordapp.com/attachments/1424028192527749201/1487535591418495077/thumbn.png?ex=69e922fa&is=69e7d17a&hm=b38fa07f93d430492ab7d884a6e97ab12e06c389e9e646e6be497df82cb648f2&">
+    
+
+  </div>
 </div>
 
-<!-- 💰 PRICES -->
-<div class="section">
-<h2>💰 Prices</h2>
-<p>Website: from $25</p>
-<p>Logo: from $10</p>
-<p>Banner: from $8</p>
-<p>Thumbnail: from $6</p>
 </div>
+
+<script>
+const acc = document.getElementsByClassName("accordion");
+
+for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function () {
+    const panel = this.nextElementSibling;
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  });
+}
+</script>
 
 </body>
 </html>
