@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DocGFX — Premium Graphics</title>
+<title>DocGFX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -203,20 +203,24 @@ footer a:hover{color:#fff}
 <div id="portfolio"></div>
 <div id="dynamicSection"></div>
 
-<!-- WEBSITES SECTION (unchanged) -->
-<section class="section reveal"><div class="section-header"><div><span class="section-tag">01 — <span data-t="secWebsites">Websites</span></span><h2 class="section-title" data-t="secWebsitesTitle">Custom Website<br>Themes</h2></div></div><div class="video-grid"><div class="video-card"><span class="v-label">Hyper Theme</span><span class="v-price">€25</span><iframe src="https://player.vimeo.com/video/1185284072?h=6a34a574dc&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div><div class="video-card"><span class="v-label">ClassiX Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185651008?h=cad3867de9&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div><div class="video-card"><span class="v-label">Syndicate Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185653786?h=695210634f&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div></div></section>
+<!-- WEBSITES SECTION -->
+<section class="section reveal" id="sec-websites"><div class="section-header"><div><span class="section-tag">01 — <span data-t="secWebsites">Websites</span></span><h2 class="section-title" data-t="secWebsitesTitle">Custom Website<br>Themes</h2></div></div><div class="video-grid"><div class="video-card"><span class="v-label">Hyper Theme</span><span class="v-price">€25</span><iframe src="https://player.vimeo.com/video/1185284072?h=6a34a574dc&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div><div class="video-card"><span class="v-label">ClassiX Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185651008?h=cad3867de9&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div><div class="video-card"><span class="v-label">Syndicate Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185653786?h=695210634f&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div></div></section>
 <div class="divider"></div>
 
-<section class="section reveal"><div class="section-header"><div><span class="section-tag">02 — <span data-t="secLogos">Logos</span></span><h2 class="section-title" data-t="secLogosTitle">Brand Identity<br>& Logos</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a></div><div class="img-grid"><div class="img-item"><img src="https://media.discordapp.net/attachments/1403170169437683842/1403210394495090778/ws_logo.png?ex=69ed7f04&is=69ec2d84&hm=225c68fca701edf2d2370899a569f5e8c2c8ae66e5977bdbc5abbbfab2ec311c&=&format=webp&quality=lossless&width=1250&height=1282" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div><div class="img-item"><img src="https://media.discordapp.net/attachments/1403170169437683842/1439464035639627899/Sellauth-Logo-EngineX.png?ex=69ed8cda&is=69ec3b5a&hm=ca9bd70e0ecaad43b179b4d49b5b700bfe0c888a7ba8d742fe48e4e738ba44dc&=&format=webp&quality=lossless&width=1282&height=1282" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div><div class="img-item"><img src="https://cdn.discordapp.com/attachments/1403170169437683842/1439464036117909675/VS-Xmas_no_bg.png?ex=69ed8cda&is=69ec3b5a&hm=ec61efa1638567e495a37a1b90de59bbf12fb598fa7f3155f2ca6949bc4e4840&" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div><div class="img-item"><img src="https://cdn.discordapp.com/attachments/1403170169437683842/1440412914132713674/Final_Comp_2.gif?ex=69edb4d0&is=69ec6350&hm=85f9de239efa7d634d0a8a3443cfee8a24a344000d7cffd2e291195afb17ca7d&" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div></div></section>
+<!-- LOGOS SECTION -->
+<section class="section reveal" id="sec-logos"><div class="section-header"><div><span class="section-tag">02 — <span data-t="secLogos">Logos</span></span><h2 class="section-title" data-t="secLogosTitle">Brand Identity<br>& Logos</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a></div><div class="img-grid" id="grid-logos"><div class="img-item"><img src="https://media.discordapp.net/attachments/1403170169437683842/1403210394495090778/ws_logo.png?ex=69ed7f04&is=69ec2d84&hm=225c68fca701edf2d2370899a569f5e8c2c8ae66e5977bdbc5abbbfab2ec311c&=&format=webp&quality=lossless&width=1250&height=1282" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div><div class="img-item"><img src="https://media.discordapp.net/attachments/1403170169437683842/1439464035639627899/Sellauth-Logo-EngineX.png?ex=69ed8cda&is=69ec3b5a&hm=ca9bd70e0ecaad43b179b4d49b5b700bfe0c888a7ba8d742fe48e4e738ba44dc&=&format=webp&quality=lossless&width=1282&height=1282" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div><div class="img-item"><img src="https://cdn.discordapp.com/attachments/1403170169437683842/1439464036117909675/VS-Xmas_no_bg.png?ex=69ed8cda&is=69ec3b5a&hm=ec61efa1638567e495a37a1b90de59bbf12fb598fa7f3155f2ca6949bc4e4840&" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div><div class="img-item"><img src="https://cdn.discordapp.com/attachments/1403170169437683842/1440412914132713674/Final_Comp_2.gif?ex=69edb4d0&is=69ec6350&hm=85f9de239efa7d634d0a8a3443cfee8a24a344000d7cffd2e291195afb17ca7d&" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div></div></section>
 <div class="divider"></div>
 
-<section class="section reveal"><div class="section-header"><div><span class="section-tag">03 — <span data-t="secBanners">Banners</span></span><h2 class="section-title" data-t="secBannersTitle">Discord & Server<br>Banners</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €15</a></div><div class="img-grid"><div class="img-item wide"><img src="https://media.discordapp.net/attachments/1427005539094630462/1479919850032861366/banner.png?ex=69edbb03&is=69ec6983&hm=466c7f5df550ea76f08d47870d1d113d7c67bc21a64ce5ef6bf6d2cc06455faa&=&format=webp&quality=lossless&width=1920&height=1080" loading="lazy" alt="DarkChair"><div class="img-overlay"><span class="overlay-label">DarkChair</span></div></div><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1427005539094630462/1440970943332618351/EngineX.gif?ex=69edc244&is=69ec70c4&hm=143076c5e730bee4698a137bf6dfe82bccf9f7995f60d3e0ac3c80fdaf091ae9&" loading="lazy" alt="Server Banner"><div class="img-overlay"><span class="overlay-label">Server Banner</span></div></div></div></section>
+<!-- BANNERS SECTION -->
+<section class="section reveal" id="sec-banners"><div class="section-header"><div><span class="section-tag">03 — <span data-t="secBanners">Banners</span></span><h2 class="section-title" data-t="secBannersTitle">Discord & Server<br>Banners</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €15</a></div><div class="img-grid" id="grid-banners"><div class="img-item wide"><img src="https://media.discordapp.net/attachments/1427005539094630462/1479919850032861366/banner.png?ex=69edbb03&is=69ec6983&hm=466c7f5df550ea76f08d47870d1d113d7c67bc21a64ce5ef6bf6d2cc06455faa&=&format=webp&quality=lossless&width=1920&height=1080" loading="lazy" alt="DarkChair"><div class="img-overlay"><span class="overlay-label">DarkChair</span></div></div><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1427005539094630462/1440970943332618351/EngineX.gif?ex=69edc244&is=69ec70c4&hm=143076c5e730bee4698a137bf6dfe82bccf9f7995f60d3e0ac3c80fdaf091ae9&" loading="lazy" alt="Server Banner"><div class="img-overlay"><span class="overlay-label">Server Banner</span></div></div></div></section>
 <div class="divider"></div>
 
-<section class="section reveal"><div class="section-header"><div><span class="section-tag">04 — <span data-t="secBoxes">Product Boxes</span></span><h2 class="section-title" data-t="secBoxesTitle">Product<br>Artwork</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €3</a></div><div class="product-grid"><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1451238374659588148/Box-New.png?ex=69ed89cf&is=69ec384f&hm=6b4b1b63e34af0bcd5ba3a30f7ac70e7ff9399d83ea2df2e35ff2f87a9449a36&=&format=webp&quality=lossless&width=1282&height=1282" loading="lazy" alt="Omega"></div><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1480967045007802418/Hise-Cod-no-bg.png?ex=69ed95ca&is=69ec444a&hm=31b0c0c540626974b1ff4eaf9dcc2819a9eeb566153242d943e90424e05b79a9&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="Box New"></div><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1480967046669008906/Crunchy-Box-no-bg.png?ex=69ed95ca&is=69ec444a&hm=10999ac546f4a21754bda39b60bf0b31f1164da75155e6c7ad502885d81dac3c&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="UA"></div><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1458399313888805038/Rust-Int.png?ex=69ede1b4&is=69ec9034&hm=2e0cb657bd9f99376bd67d07d60e454a389c8fc4408280ce664b509e5c7cd46e&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="Rust Int"></div></div></section>
+<!-- PRODUCT BOXES SECTION -->
+<section class="section reveal" id="sec-boxes"><div class="section-header"><div><span class="section-tag">04 — <span data-t="secBoxes">Product Boxes</span></span><h2 class="section-title" data-t="secBoxesTitle">Product<br>Artwork</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €3</a></div><div class="product-grid" id="grid-boxes"><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1451238374659588148/Box-New.png?ex=69ed89cf&is=69ec384f&hm=6b4b1b63e34af0bcd5ba3a30f7ac70e7ff9399d83ea2df2e35ff2f87a9449a36&=&format=webp&quality=lossless&width=1282&height=1282" loading="lazy" alt="Omega"></div><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1480967045007802418/Hise-Cod-no-bg.png?ex=69ed95ca&is=69ec444a&hm=31b0c0c540626974b1ff4eaf9dcc2819a9eeb566153242d943e90424e05b79a9&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="Box New"></div><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1480967046669008906/Crunchy-Box-no-bg.png?ex=69ed95ca&is=69ec444a&hm=10999ac546f4a21754bda39b60bf0b31f1164da75155e6c7ad502885d81dac3c&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="UA"></div><div class="product-item"><img src="https://media.discordapp.net/attachments/1403210515307565116/1458399313888805038/Rust-Int.png?ex=69ede1b4&is=69ec9034&hm=2e0cb657bd9f99376bd67d07d60e454a389c8fc4408280ce664b509e5c7cd46e&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="Rust Int"></div></div></section>
 <div class="divider"></div>
 
-<section class="section reveal"><div class="section-header"><div><span class="section-tag">05 — <span data-t="secThumbs">Thumbnails</span></span><h2 class="section-title" data-t="secThumbsTitle">YouTube<br>Thumbnails</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a></div><div class="img-grid"><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1487535591418495077/thumbn.png?ex=69edc03a&is=69ec6eba&hm=3a69bb05d41fb8e32a1b147a22134c93863e4df10920fedec9fcd4ce9057663e&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1480634711998201978/thumbn.png?ex=69edb1c8&is=69ec6048&hm=09b170da88088d832a1f0b77e052d3d11f76378c6dfb1a6fdb568c63bd32b53b&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1424546285595262996/image.png?ex=69ed551d&is=69ec039d&hm=23c60d419c4c2fb43595fd9aa8731e10dae1dbba6b26102292c216894992ba1d&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div></div></section>
+<!-- THUMBNAILS SECTION -->
+<section class="section reveal" id="sec-thumbnails"><div class="section-header"><div><span class="section-tag">05 — <span data-t="secThumbs">Thumbnails</span></span><h2 class="section-title" data-t="secThumbsTitle">YouTube<br>Thumbnails</h2></div><a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a></div><div class="img-grid" id="grid-thumbnails"><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1487535591418495077/thumbn.png?ex=69edc03a&is=69ec6eba&hm=3a69bb05d41fb8e32a1b147a22134c93863e4df10920fedec9fcd4ce9057663e&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1480634711998201978/thumbn.png?ex=69edb1c8&is=69ec6048&hm=09b170da88088d832a1f0b77e052d3d11f76378c6dfb1a6fdb568c63bd32b53b&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div><div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1424546285595262996/image.png?ex=69ed551d&is=69ec039d&hm=23c60d419c4c2fb43595fd9aa8731e10dae1dbba6b26102292c216894992ba1d&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div></div></section>
 
 <div class="cta reveal"><h2 class="cta-title" data-t="ctaTitle">Ready for your next<br><span style="color:var(--muted)">Project?</span></h2><p class="cta-sub" data-t="ctaSub">Join the Discord and order your custom GFX directly.</p><a href="https://discord.gg/SNHbWq7hPt" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a></div>
 
@@ -238,84 +242,228 @@ let lang='en';
 function applyLang(l){lang=l;const t=T[l];document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(t[k]!==undefined)el.innerHTML=t[k];});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));document.documentElement.lang=l;}
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
 
+// Map categories to their grid container IDs
+const categoryGridMap = {
+  'Logos': 'grid-logos',
+  'Banners': 'grid-banners',
+  'Thumbnails': 'grid-thumbnails',
+  'Product Boxes': 'grid-boxes',
+  'Websites': 'grid-websites' // Websites use video-grid, handled separately
+};
+
+function getGridClass(category) {
+  const gridId = categoryGridMap[category];
+  if (!gridId) return 'img-grid';
+  const grid = document.getElementById(gridId);
+  if (!grid) return 'img-grid';
+  return grid.className; // preserves 'img-grid' or 'product-grid' etc.
+}
+
 function loadDynamicGFX(){
-  const items=JSON.parse(localStorage.getItem('docgfx_items')||'[]');
-  const sec=document.getElementById('dynamicSection');
-  if(!items.length){sec.innerHTML='';return;}
-  const cats={};items.forEach(item=>{if(!cats[item.category])cats[item.category]=[];cats[item.category].push(item);});
-  sec.innerHTML='<div class="divider"></div>';
-  let idx=6;
-  Object.entries(cats).forEach(([cat,list])=>{
-    const el=document.createElement('div');el.className='dynamic-section reveal';
-    el.innerHTML=`<div class="section-header"><div><span class="dynamic-tag">0${idx}++ — New Additions</span><h2>${cat}</h2></div></div><div class="dynamic-grid" data-category="${cat}">${list.map((item,idx2)=>`<div class="dyn-item" data-item-id="${item.id || item.date}"><img src="${item.url}" loading="lazy" alt="${item.title}">${idx2===0?'<div class="dyn-new">NEW</div>':''}<div class="dyn-meta"><div class="dyn-title">${escapeHtml(item.title)}</div><div class="dyn-cat">${item.category}</div></div><div class="dyn-delete" data-id="${item.id || item.date}"><i class="fa-solid fa-trash-can"></i></div></div>`).join('')}</div>`;
-    sec.appendChild(el);idx++;
+  const items = JSON.parse(localStorage.getItem('docgfx_items') || '[]');
+  
+  // Remove all existing dynamic items from grids first (to avoid duplicates on reload)
+  document.querySelectorAll('.dyn-item').forEach(el => el.remove());
+  
+  if (!items.length) {
+    updateStatTotal(0);
+    return;
+  }
+  
+  // Group items by category
+  const cats = {};
+  items.forEach(item => {
+    if (!cats[item.category]) cats[item.category] = [];
+    cats[item.category].push(item);
   });
-  document.querySelectorAll('#dynamicSection .reveal').forEach(el=>obs.observe(el));
-  document.querySelectorAll('.dyn-delete').forEach(btn=>{btn.addEventListener('click',(e)=>{e.stopPropagation();if(!isLoggedIn){showLogin();return;}const id=btn.getAttribute('data-id');deleteItemById(id);});});
-  const total=50+items.length;document.getElementById('statTotal').textContent=total+'+';
+  
+  // Insert items into their respective category grids
+  Object.entries(cats).forEach(([cat, list]) => {
+    const gridId = categoryGridMap[cat];
+    if (!gridId) return;
+    
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    
+    // Create dynamic items for this category
+    list.forEach((item, index) => {
+      const isNewest = index === 0; // Mark the first (newest) item as NEW
+      const dynItem = document.createElement('div');
+      dynItem.className = 'dyn-item';
+      dynItem.setAttribute('data-item-id', item.id || item.date);
+      dynItem.innerHTML = `
+        <img src="${item.url}" loading="lazy" alt="${escapeHtml(item.title)}">
+        ${isNewest ? '<div class="dyn-new">NEW</div>' : ''}
+        <div class="dyn-meta">
+          <div class="dyn-title">${escapeHtml(item.title)}</div>
+          <div class="dyn-cat">${item.category}</div>
+        </div>
+        <div class="dyn-delete" data-id="${item.id || item.date}">
+          <i class="fa-solid fa-trash-can"></i>
+        </div>
+      `;
+      
+      // Add delete event listener
+      const deleteBtn = dynItem.querySelector('.dyn-delete');
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!isLoggedIn) {
+          showLogin();
+          return;
+        }
+        const id = deleteBtn.getAttribute('data-id');
+        deleteItemById(id);
+      });
+      
+      // Insert at the beginning of the grid (newest first)
+      grid.insertBefore(dynItem, grid.firstChild);
+    });
+  });
+  
+  updateStatTotal(items.length);
 }
+
+function updateStatTotal(dynamicCount) {
+  const total = 50 + dynamicCount;
+  document.getElementById('statTotal').textContent = total + '+';
+}
+
 function deleteItemById(id){
-  let items=JSON.parse(localStorage.getItem('docgfx_items')||'[]');
-  const newItems=items.filter(item=>(item.id||item.date).toString()!==id.toString());
-  if(newItems.length===items.length)return;
-  localStorage.setItem('docgfx_items',JSON.stringify(newItems));
+  let items = JSON.parse(localStorage.getItem('docgfx_items') || '[]');
+  const newItems = items.filter(item => (item.id || item.date).toString() !== id.toString());
+  if (newItems.length === items.length) return;
+  localStorage.setItem('docgfx_items', JSON.stringify(newItems));
   loadDynamicGFX();
-  showAdminStatus('✓ Item deleted','ok');
-}
-function escapeHtml(str){return str.replace(/[&<>]/g,function(m){if(m==='&')return '&amp;';if(m==='<')return '&lt;';if(m==='>')return '&gt;';return m;});}
-
-const loginOverlay=document.getElementById('loginOverlay');
-function showLogin(){loginOverlay.classList.add('open');}
-function hideLogin(){loginOverlay.classList.remove('open');}
-document.getElementById('loginSubmit').addEventListener('click',()=>{const u=document.getElementById('loginUser').value.trim();const p=document.getElementById('loginPass').value;if(u===ADMIN_USER && p===ADMIN_PASS){isLoggedIn=true;hideLogin();openAdminPanel();document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';document.getElementById('loginError').style.display='none';}else{document.getElementById('loginError').style.display='block';}});
-document.getElementById('loginUser').addEventListener('keypress',e=>{if(e.key==='Enter')document.getElementById('loginSubmit').click();});
-document.getElementById('loginPass').addEventListener('keypress',e=>{if(e.key==='Enter')document.getElementById('loginSubmit').click();});
-
-const adminOverlay=document.getElementById('adminOverlay');
-function openAdminPanel(){if(isLoggedIn)adminOverlay.classList.add('open');else showLogin();}
-function closeAdminPanel(){adminOverlay.classList.remove('open');}
-document.getElementById('adminBtn').addEventListener('click',openAdminPanel);
-document.getElementById('adminBtnFooter').addEventListener('click',openAdminPanel);
-document.getElementById('adminClose').addEventListener('click',closeAdminPanel);
-document.getElementById('adminCancelBtn').addEventListener('click',closeAdminPanel);
-adminOverlay.addEventListener('click',e=>{if(e.target===adminOverlay)closeAdminPanel();});
-
-const DEFAULT_WEBHOOK_AVATAR="https://cdn.discordapp.com/attachments/1496247584531153017/1496247633021243553/IMG_7228.png?ex=69edcdf2&is=69ec7c72&hm=5b5006cafa2e239997353a11970ba3cf2912902c8912a03b8349e8bb8f07e68e&";
-const whInput=document.getElementById('webhookUrl');
-const savedWh=localStorage.getItem('docgfx_wh');
-if(savedWh) whInput.value=savedWh;
-document.getElementById('saveWebhook').addEventListener('click',()=>{localStorage.setItem('docgfx_wh',whInput.value.trim());showAdminStatus('Webhook saved','ok');});
-
-async function sendToDiscord(title,category,imageUrl,note){
-  const webhook=whInput.value.trim();
-  if(!webhook)return false;
-  const embed={title:`🎨 New GFX: ${title}`,description:note||"Fresh addition to DocGFX portfolio!",color:0xffffff,fields:[{name:"Category",value:category,inline:true},{name:"Added",value:new Date().toLocaleString(),inline:true}],image:{url:imageUrl},footer:{text:"DocGFX · Premium Graphics"},timestamp:new Date().toISOString()};
-  try{const res=await fetch(webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:"DocGFX",avatar_url:DEFAULT_WEBHOOK_AVATAR,embeds:[embed]})});return res.ok||res.status===204;}catch{return false;}
+  showAdminStatus('✓ Item deleted', 'ok');
 }
 
-document.getElementById('adminAddBtn').addEventListener('click',async()=>{
-  if(!isLoggedIn){showLogin();return;}
-  const url=document.getElementById('adminImgUrl').value.trim();
-  const title=document.getElementById('adminTitle').value.trim();
-  const category=document.getElementById('adminCategory').value;
-  if(!url){showAdminStatus('Image URL required','err');return;}
-  if(!title){showAdminStatus('Title required','err');return;}
-  const items=JSON.parse(localStorage.getItem('docgfx_items')||'[]');
-  const newId=Date.now();
-  items.unshift({id:newId,url,title,category,date:newId});
-  localStorage.setItem('docgfx_items',JSON.stringify(items.slice(0,30)));
-  loadDynamicGFX();
-  const sent=await sendToDiscord(title,category,url,`**${title}** added to ${category}`);
-  if(sent)showAdminStatus('✓ Added & Discord notified!','ok');
-  else showAdminStatus('✓ Added (webhook not set)','ok');
-  document.getElementById('adminImgUrl').value='';
-  document.getElementById('adminTitle').value='';
-  setTimeout(closeAdminPanel,1500);
+function escapeHtml(str){
+  return str.replace(/[&<>]/g, function(m){
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
+  });
+}
+
+const loginOverlay = document.getElementById('loginOverlay');
+function showLogin(){ loginOverlay.classList.add('open'); }
+function hideLogin(){ loginOverlay.classList.remove('open'); }
+
+document.getElementById('loginSubmit').addEventListener('click', () => {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  if (u === ADMIN_USER && p === ADMIN_PASS) {
+    isLoggedIn = true;
+    hideLogin();
+    openAdminPanel();
+    document.getElementById('loginUser').value = '';
+    document.getElementById('loginPass').value = '';
+    document.getElementById('loginError').style.display = 'none';
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
 });
 
-function showAdminStatus(msg,type){const s=document.getElementById('adminStatus');s.textContent=msg;s.className='nstatus '+type;setTimeout(()=>{s.className='nstatus';},3500);}
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.07});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.getElementById('loginUser').addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('loginSubmit').click(); });
+document.getElementById('loginPass').addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('loginSubmit').click(); });
+
+const adminOverlay = document.getElementById('adminOverlay');
+function openAdminPanel(){ if (isLoggedIn) adminOverlay.classList.add('open'); else showLogin(); }
+function closeAdminPanel(){ adminOverlay.classList.remove('open'); }
+
+document.getElementById('adminBtn').addEventListener('click', openAdminPanel);
+document.getElementById('adminBtnFooter').addEventListener('click', openAdminPanel);
+document.getElementById('adminClose').addEventListener('click', closeAdminPanel);
+document.getElementById('adminCancelBtn').addEventListener('click', closeAdminPanel);
+adminOverlay.addEventListener('click', e => { if (e.target === adminOverlay) closeAdminPanel(); });
+
+const DEFAULT_WEBHOOK_AVATAR = "https://cdn.discordapp.com/attachments/1496247584531153017/1496247633021243553/IMG_7228.png?ex=69edcdf2&is=69ec7c72&hm=5b5006cafa2e239997353a11970ba3cf2912902c8912a03b8349e8bb8f07e68e&";
+const whInput = document.getElementById('webhookUrl');
+const savedWh = localStorage.getItem('docgfx_wh');
+if (savedWh) whInput.value = savedWh;
+document.getElementById('saveWebhook').addEventListener('click', () => {
+  localStorage.setItem('docgfx_wh', whInput.value.trim());
+  showAdminStatus('Webhook saved', 'ok');
+});
+
+async function sendToDiscord(title, category, imageUrl, note){
+  const webhook = whInput.value.trim();
+  if (!webhook) return false;
+  const embed = {
+    title: `🎨 New GFX: ${title}`,
+    description: note || "Fresh addition to DocGFX portfolio!",
+    color: 0xffffff,
+    fields: [
+      { name: "Category", value: category, inline: true },
+      { name: "Added", value: new Date().toLocaleString(), inline: true }
+    ],
+    image: { url: imageUrl },
+    footer: { text: "DocGFX · Premium Graphics" },
+    timestamp: new Date().toISOString()
+  };
+  try {
+    const res = await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: "DocGFX",
+        avatar_url: DEFAULT_WEBHOOK_AVATAR,
+        embeds: [embed]
+      })
+    });
+    return res.ok || res.status === 204;
+  } catch {
+    return false;
+  }
+}
+
+document.getElementById('adminAddBtn').addEventListener('click', async () => {
+  if (!isLoggedIn) { showLogin(); return; }
+  
+  const url = document.getElementById('adminImgUrl').value.trim();
+  const title = document.getElementById('adminTitle').value.trim();
+  const category = document.getElementById('adminCategory').value;
+  
+  if (!url) { showAdminStatus('Image URL required', 'err'); return; }
+  if (!title) { showAdminStatus('Title required', 'err'); return; }
+  
+  const items = JSON.parse(localStorage.getItem('docgfx_items') || '[]');
+  const newId = Date.now();
+  items.unshift({ id: newId, url, title, category, date: newId });
+  localStorage.setItem('docgfx_items', JSON.stringify(items.slice(0, 30)));
+  
+  loadDynamicGFX();
+  
+  const sent = await sendToDiscord(title, category, url, `**${title}** added to ${category}`);
+  if (sent) showAdminStatus('✓ Added & Discord notified!', 'ok');
+  else showAdminStatus('✓ Added (webhook not set)', 'ok');
+  
+  document.getElementById('adminImgUrl').value = '';
+  document.getElementById('adminTitle').value = '';
+  setTimeout(closeAdminPanel, 1500);
+});
+
+function showAdminStatus(msg, type){
+  const s = document.getElementById('adminStatus');
+  s.textContent = msg;
+  s.className = 'nstatus ' + type;
+  setTimeout(() => { s.className = 'nstatus'; }, 3500);
+}
+
+// Intersection Observer for reveal animations
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Initial load
 loadDynamicGFX();
 applyLang('en');
 </script>
