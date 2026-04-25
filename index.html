@@ -113,6 +113,11 @@ h1 em{font-style:normal;color:var(--muted)}
 .dynamic-tag{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
 .dynamic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:24px}
 .dyn-item{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);aspect-ratio:1/1;transition:border-color 0.22s,transform 0.22s;contain:layout paint}
+#panel-server-banners .dyn-item{aspect-ratio:16/9}
+#panel-profile-banners .dyn-item{aspect-ratio:5/2}
+#panel-embed-banners .dyn-item{aspect-ratio:3/1}
+#panel-signatures .dyn-item{aspect-ratio:728/90}
+#panel-product-cards-panel .dyn-item{aspect-ratio:16/9}
 .dyn-item img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(60%);transition:filter 0.3s,transform 0.3s}
 .dyn-item:hover{border-color:var(--border-h);transform:translateY(-3px)}
 .dyn-item:hover img{filter:grayscale(0%);transform:scale(1.03)}
@@ -176,9 +181,20 @@ footer a:hover{color:#fff}
 .color-picker-wrapper input[type="color"]::-webkit-color-swatch{border:none;border-radius:6px}
 .color-picker-wrapper .color-hex{color:var(--muted2);font-size:12px;font-family:monospace;letter-spacing:0.04em}
 
-/* Empty sub-panel placeholder */
-.empty-placeholder{padding:40px 0;text-align:center;color:var(--muted);font-size:13px;border:1px dashed var(--border);border-radius:var(--radius)}
+.empty-placeholder{padding:40px 20px;text-align:center;color:var(--muted);font-size:13px;border:1px dashed var(--border);border-radius:var(--radius);aspect-ratio:unset!important;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .empty-placeholder i{display:block;font-size:22px;margin-bottom:8px;opacity:0.4}
+#panel-profile-banners .img-grid{grid-template-columns:repeat(auto-fill,minmax(420px,1fr))}
+#panel-profile-banners .img-item,
+#panel-profile-banners .dyn-item{aspect-ratio:5/2}
+#panel-embed-banners .img-grid{grid-template-columns:repeat(auto-fill,minmax(480px,1fr))}
+#panel-embed-banners .img-item,
+#panel-embed-banners .dyn-item{aspect-ratio:3/1}
+#panel-signatures .img-item,
+#panel-signatures .dyn-item{aspect-ratio:728/90}
+#panel-signatures .img-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+#panel-product-cards-panel .product-item,
+#panel-product-cards-panel .dyn-item{aspect-ratio:16/9}
+#panel-product-cards-panel .product-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 
 @media(max-width:640px){
   .img-item.wide{grid-column:span 1;aspect-ratio:1/1}
@@ -296,25 +312,22 @@ footer a:hover{color:#fff}
   <!-- Profile Banner -->
   <div class="sub-panel" id="panel-profile-banners">
     <div class="sub-section-label" data-t="subProfileBanners">Profile Banners</div>
-    <div class="img-grid" id="grid-profile-banners">
-      <div class="empty-placeholder"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
-    </div>
+    <div class="img-grid" id="grid-profile-banners"></div>
+    <div class="empty-placeholder" id="placeholder-profile-banners"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
   </div>
 
   <!-- Embed Banners -->
   <div class="sub-panel" id="panel-embed-banners">
     <div class="sub-section-label" data-t="subEmbedBanners">Embed Banners</div>
-    <div class="img-grid" id="grid-embed-banners">
-      <div class="empty-placeholder"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
-    </div>
+    <div class="img-grid" id="grid-embed-banners"></div>
+    <div class="empty-placeholder" id="placeholder-embed-banners"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
   </div>
 
   <!-- Signatures -->
   <div class="sub-panel" id="panel-signatures">
     <div class="sub-section-label" data-t="subSignatures">Signatures</div>
-    <div class="img-grid" id="grid-signatures">
-      <div class="empty-placeholder"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
-    </div>
+    <div class="img-grid" id="grid-signatures"></div>
+    <div class="empty-placeholder" id="placeholder-signatures"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
   </div>
 </section>
 <div class="divider"></div>
@@ -361,9 +374,8 @@ footer a:hover{color:#fff}
   <!-- Product Cards -->
   <div class="sub-panel" id="panel-product-cards-panel">
     <div class="sub-section-label" data-t="subProductCards">Product Cards</div>
-    <div class="product-grid" id="grid-cards">
-      <div class="empty-placeholder" style="grid-column:1/-1"><i class="fa-regular fa-rectangle-list"></i>Coming soon — check Discord for updates</div>
-    </div>
+    <div class="product-grid" id="grid-cards"></div>
+    <div class="empty-placeholder" id="placeholder-cards"><i class="fa-regular fa-rectangle-list"></i>Coming soon — check Discord for updates</div>
   </div>
 </section>
 <div class="divider"></div>
@@ -463,7 +475,6 @@ function initTabGroup(tabsContainerId) {
 initTabGroup('bannerTabs');
 initTabGroup('productTabs');
 
-// ---- Dynamic GFX ----
 const categoryGridMap = {
   'Logos': 'grid-logos',
   'Server Banners': 'grid-server-banners',
@@ -474,14 +485,23 @@ const categoryGridMap = {
   'Product Cards': 'grid-cards',
   'Websites': 'grid-websites',
   'Thumbnails': 'grid-thumbnails',
-  // legacy support
-  'Banners': 'grid-server-banners',
-  'Product Boxes (legacy)': 'grid-boxes'
+  'Banners': 'grid-server-banners'
+};
+
+const gridPlaceholderMap = {
+  'grid-profile-banners': 'placeholder-profile-banners',
+  'grid-embed-banners': 'placeholder-embed-banners',
+  'grid-signatures': 'placeholder-signatures',
+  'grid-cards': 'placeholder-cards'
 };
 
 function loadDynamicGFX(){
   const items = JSON.parse(localStorage.getItem('docgfx_items') || '[]');
   document.querySelectorAll('.dyn-item').forEach(el => el.remove());
+  Object.values(gridPlaceholderMap).forEach(pid => {
+    const p = document.getElementById(pid);
+    if (p) p.style.display = '';
+  });
   if (!items.length) { updateStatTotal(0); return; }
   const cats = {};
   items.forEach(item => { if (!cats[item.category]) cats[item.category] = []; cats[item.category].push(item); });
@@ -490,9 +510,8 @@ function loadDynamicGFX(){
     if (!gridId) return;
     const grid = document.getElementById(gridId);
     if (!grid) return;
-    // Remove empty placeholder if present
-    const placeholder = grid.querySelector('.empty-placeholder');
-    if (placeholder) placeholder.remove();
+    const phId = gridPlaceholderMap[gridId];
+    if (phId) { const ph = document.getElementById(phId); if (ph) ph.style.display = 'none'; }
     list.forEach((item, index) => {
       const isNewest = index === 0;
       const dynItem = document.createElement('div');
@@ -532,7 +551,6 @@ function deleteItemById(id){
 
 function escapeHtml(str){ return str.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]||m)); }
 
-// ---- Auth ----
 const loginOverlay = document.getElementById('loginOverlay');
 function showLogin(){ loginOverlay.classList.add('open'); }
 function hideLogin(){ loginOverlay.classList.remove('open'); }
@@ -561,7 +579,6 @@ function performLogout(){isLoggedIn=false;closeAdminPanel();hideLogin();loadDyna
 document.getElementById('discordLoginBtn').addEventListener('click',startDiscordLogin);
 document.getElementById('loginError').style.display='none';
 
-// ---- Admin panel ----
 const adminOverlay=document.getElementById('adminOverlay');
 function openAdminPanel(){if(isLoggedIn)adminOverlay.classList.add('open');else showLogin();}
 function closeAdminPanel(){adminOverlay.classList.remove('open');}
@@ -616,7 +633,6 @@ function showAdminStatus(msg,type){
   setTimeout(()=>{s.className='nstatus';},3500);
 }
 
-// ---- Scroll reveal ----
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.07});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
