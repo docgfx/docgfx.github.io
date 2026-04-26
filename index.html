@@ -583,13 +583,11 @@ function showToast(msg, type){
 }
 
 async function deleteItemById(id){
-  const token = getGhToken();
-  if (!token) { showToast('GitHub Token fehlt!', 'err'); openAdminPanel(); return; }
-  showToast('Deleting…', '');
+  if (!getGhToken()) { showToast('GitHub Token fehlt!', 'err'); openAdminPanel(); return; }
+  showToast('Wird gelöscht…', '');
   try {
     const {items, sha} = await ghGetFile();
-    const newItems = items.filter(item => (item.id || item.date).toString() !== id.toString());
-    if (newItems.length === items.length) { showToast('Item nicht gefunden', 'err'); return; }
+    const newItems = items.filter(item => String(item.id||item.date) !== String(id));
     await ghPutFile(newItems, sha);
     renderItems(newItems);
     showToast('✓ Gelöscht', '');
@@ -662,22 +660,29 @@ document.getElementById('saveGhToken').addEventListener('click',()=>{localStorag
 function getGhToken(){return ghTokenInput.value.trim()||localStorage.getItem('docgfx_gh_token')||'';}
 
 async function ghGetFile(){
-  const res=await fetch(GH_API+'?ref='+GH_BRANCH,{headers:{Authorization:'token '+getGhToken(),'Accept':'application/vnd.github+json'}});
+  const res=await fetch(GH_API+'?ref='+GH_BRANCH+'&t='+Date.now(),{headers:{Authorization:'token '+getGhToken(),'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}});
   if(res.status===404)return{items:[],sha:null};
   if(!res.ok)throw new Error('GitHub fetch failed: '+res.status);
   const data=await res.json();
-  const content=JSON.parse(atob(data.content.replace(/\n/g,'')));
-  return{items:content.items||[],sha:data.sha};
+  let items=[];
+  try{
+    const decoded=atob(data.content.replace(/\n/g,''));
+    const parsed=JSON.parse(decoded);
+    items=Array.isArray(parsed.items)?parsed.items:[];
+  }catch{items=[];}
+  return{items,sha:data.sha};
 }
 
-async function ghPutFile(items, sha, retry){
-  const content=btoa(unescape(encodeURIComponent(JSON.stringify({items},null,2))));
-  const body={message:'Update portfolio data',content,branch:GH_BRANCH};
+async function ghPutFile(items,sha){
+  const json=JSON.stringify({items},null,2);
+  const encoded=btoa(unescape(encodeURIComponent(json)));
+  const body={message:'Update portfolio data',content:encoded,branch:GH_BRANCH};
   if(sha)body.sha=sha;
-  const res=await fetch(GH_API,{method:'PUT',headers:{Authorization:'token '+getGhToken(),'Accept':'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});
-  if(res.status===409 && !retry){
+  let res=await fetch(GH_API,{method:'PUT',headers:{Authorization:'token '+getGhToken(),'Accept':'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(res.status===409){
     const fresh=await ghGetFile();
-    return ghPutFile(items,fresh.sha,true);
+    body.sha=fresh.sha;
+    res=await fetch(GH_API,{method:'PUT',headers:{Authorization:'token '+getGhToken(),'Accept':'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});
   }
   if(!res.ok)throw new Error('GitHub push failed: '+res.status);
   return res.json();
@@ -688,8 +693,10 @@ async function fetchRemoteItems(){
     const url=`https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
     const res=await fetch(url);
     if(!res.ok)return[];
-    const data=await res.json();
-    return data.items||[];
+    const text=await res.text();
+    if(!text.trim())return[];
+    const data=JSON.parse(text);
+    return Array.isArray(data.items)?data.items:[];
   }catch{return[];}
 }
 
