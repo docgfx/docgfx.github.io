@@ -496,7 +496,29 @@ const gridPlaceholderMap = {
   'grid-cards': 'placeholder-cards'
 };
 
-function renderItems(items){
+function switchToItemTab(category){
+  const tabMap = {
+    'Server Banners': {tabs:'bannerTabs', panel:'server-banners'},
+    'Profile Banners': {tabs:'bannerTabs', panel:'profile-banners'},
+    'Embed Banners': {tabs:'bannerTabs', panel:'embed-banners'},
+    'Signatures': {tabs:'bannerTabs', panel:'signatures'},
+    'Product Boxes': {tabs:'productTabs', panel:'product-boxes-panel'},
+    'Product Cards': {tabs:'productTabs', panel:'product-cards-panel'}
+  };
+  const mapping = tabMap[category];
+  if (!mapping) return;
+  const container = document.getElementById(mapping.tabs);
+  if (!container) return;
+  container.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+  const targetTab = container.querySelector(`[data-panel="${mapping.panel}"]`);
+  if (targetTab) targetTab.classList.add('active');
+  const section = container.closest('.section');
+  section.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + mapping.panel);
+  if (panel) panel.classList.add('active');
+}
+
+function renderItems(items, focusCategory){
   document.querySelectorAll('.dyn-item').forEach(el => el.remove());
   Object.values(gridPlaceholderMap).forEach(pid => {
     const p = document.getElementById(pid);
@@ -532,10 +554,11 @@ function renderItems(items){
         const deleteBtn = dynItem.querySelector('.dyn-delete');
         if (deleteBtn) deleteBtn.addEventListener('click', e => { e.stopPropagation(); deleteItemById(deleteBtn.getAttribute('data-id')); });
       }
-      grid.insertBefore(dynItem, grid.firstChild);
+      grid.appendChild(dynItem);
     });
   });
   updateStatTotal(items.length);
+  if (focusCategory) switchToItemTab(focusCategory);
 }
 
 async function loadDynamicGFX(){
@@ -579,7 +602,7 @@ function handleAuthCallback(){
   fetch('https://discord.com/api/users/@me',{headers:{'Authorization':'Bearer '+accessToken}})
     .then(r=>{if(!r.ok)throw new Error('API error');return r.json();})
     .then(user=>{
-      if(user.id===ALLOWED_USER_ID){isLoggedIn=true;hideLogin();openAdminPanel();loadDynamicGFX();document.getElementById('loginError').style.display='none';}
+      if(user.id===ALLOWED_USER_ID){isLoggedIn=true;hideLogin();openAdminPanel();loadDynamicGFX().then(()=>{});document.getElementById('loginError').style.display='none';}
       else{document.getElementById('loginError').textContent='Access denied. Only the owner can login.';document.getElementById('loginError').style.display='block';}
     })
     .catch(()=>{document.getElementById('loginError').textContent='Failed to verify identity. Try again.';document.getElementById('loginError').style.display='block';});
@@ -672,7 +695,7 @@ document.getElementById('adminAddBtn').addEventListener('click',async()=>{
     const newId=Date.now();
     items.unshift({id:newId,url,title,category,date:newId});
     await ghPutFile(items.slice(0,100),sha);
-    loadDynamicGFX();
+    renderItems(items.slice(0,100), category);
     const sent=await sendToDiscord(title,category,url,`**${title}** added to ${category}`);
     showAdminStatus(sent?'✓ Gespeichert & Discord benachrichtigt!':'✓ Gespeichert auf GitHub!','ok');
     document.getElementById('adminImgUrl').value='';
