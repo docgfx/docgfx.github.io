@@ -662,7 +662,7 @@ function getGhToken(){return ghTokenInput.value.trim()||localStorage.getItem('do
 async function ghGetFile(){
   const token = getGhToken();
   if(!token) throw new Error('Kein GitHub Token gesetzt');
-  const res=await fetch(GH_API+'?ref='+GH_BRANCH+'&t='+Date.now(),{headers:{Authorization:'token '+token,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}});
+  const res=await fetch(GH_API+'?ref='+GH_BRANCH+'&t='+Date.now(),{headers:{Authorization:'token '+token,'Accept':'application/vnd.github+json'}});
   if(res.status===404)return{items:[],sha:null};
   if(res.status===401)throw new Error('Token ungültig oder abgelaufen (401)');
   if(res.status===403)throw new Error('Token hat keine Contents-Berechtigung (403)');
