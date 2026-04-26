@@ -670,11 +670,15 @@ async function ghGetFile(){
   return{items:content.items||[],sha:data.sha};
 }
 
-async function ghPutFile(items,sha){
+async function ghPutFile(items, sha, retry){
   const content=btoa(unescape(encodeURIComponent(JSON.stringify({items},null,2))));
   const body={message:'Update portfolio data',content,branch:GH_BRANCH};
   if(sha)body.sha=sha;
   const res=await fetch(GH_API,{method:'PUT',headers:{Authorization:'token '+getGhToken(),'Accept':'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(res.status===409 && !retry){
+    const fresh=await ghGetFile();
+    return ghPutFile(items,fresh.sha,true);
+  }
   if(!res.ok)throw new Error('GitHub push failed: '+res.status);
   return res.json();
 }
