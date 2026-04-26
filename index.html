@@ -660,8 +660,12 @@ document.getElementById('saveGhToken').addEventListener('click',()=>{localStorag
 function getGhToken(){return ghTokenInput.value.trim()||localStorage.getItem('docgfx_gh_token')||'';}
 
 async function ghGetFile(){
-  const res=await fetch(GH_API+'?ref='+GH_BRANCH+'&t='+Date.now(),{headers:{Authorization:'token '+getGhToken(),'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}});
+  const token = getGhToken();
+  if(!token) throw new Error('Kein GitHub Token gesetzt');
+  const res=await fetch(GH_API+'?ref='+GH_BRANCH+'&t='+Date.now(),{headers:{Authorization:'token '+token,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}});
   if(res.status===404)return{items:[],sha:null};
+  if(res.status===401)throw new Error('Token ungültig oder abgelaufen (401)');
+  if(res.status===403)throw new Error('Token hat keine Contents-Berechtigung (403)');
   if(!res.ok)throw new Error('GitHub fetch failed: '+res.status);
   const data=await res.json();
   let items=[];
@@ -729,7 +733,10 @@ document.getElementById('adminAddBtn').addEventListener('click',async()=>{
     document.getElementById('adminTitle').value='';
     setTimeout(closeAdminPanel,1800);
   }catch(e){
-    showAdminStatus('Fehler: '+e.message,'err');
+    const msg = e.message.includes('Failed to fetch') || e.message.includes('Load failed')
+      ? 'Netzwerkfehler — Token gesetzt? Internet ok?'
+      : 'Fehler: '+e.message;
+    showAdminStatus(msg,'err');
   }
 });
 
