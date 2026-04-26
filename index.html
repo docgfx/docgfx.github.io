@@ -176,7 +176,9 @@ footer a:hover{color:#fff}
 .nstatus.err{background:rgba(255,80,80,0.08);color:#ff6b6b;border:1px solid rgba(255,80,80,0.2);display:block}
 
 .color-picker-wrapper{display:flex;align-items:center;gap:10px}
-.color-picker-wrapper input[type="color"]{width:40px;height:40px;border:1px solid var(--border);border-radius:8px;background:transparent;cursor:pointer;padding:2px}
+.global-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#fff;color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:10px 22px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity 0.22s,transform 0.22s;z-index:500;white-space:nowrap}
+.global-toast.err{background:#ff4444;color:#fff}
+.global-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .color-picker-wrapper input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
 .color-picker-wrapper input[type="color"]::-webkit-color-swatch{border:none;border-radius:6px}
 .color-picker-wrapper .color-hex{color:var(--muted2);font-size:12px;font-family:monospace;letter-spacing:0.04em}
@@ -400,6 +402,8 @@ footer a:hover{color:#fff}
 
 <footer><span>© 2025 DocGFX</span><span style="color:var(--border-h)">·</span><a href="https://discord.gg/SNHbWq7hPt"><i class="fa-brands fa-discord"></i> Discord</a><span style="color:var(--border-h)">·</span><button class="admin-link" id="adminBtnFooter" style="background:none;border:none;font-size:11px;padding:0;gap:4px"><i class="fa-solid fa-lock" style="font-size:9px"></i> Admin</button></footer>
 
+<div class="global-toast" id="globalToast"></div>
+
 <div class="login-overlay" id="loginOverlay">
   <div class="login-panel">
     <h3><i class="fa-brands fa-discord"></i> Admin Login</h3>
@@ -539,8 +543,6 @@ function renderItems(items, focusCategory){
       const dynItem = document.createElement('div');
       dynItem.className = 'dyn-item';
       dynItem.setAttribute('data-item-id', item.id || item.date);
-      let deleteHTML = '';
-      if (isLoggedIn) deleteHTML = `<div class="dyn-delete" data-id="${item.id || item.date}"><i class="fa-solid fa-trash-can"></i></div>`;
       dynItem.innerHTML = `
         <img src="${item.url}" loading="lazy" alt="${escapeHtml(item.title)}">
         ${isNewest ? '<div class="dyn-new">NEW</div>' : ''}
@@ -548,18 +550,22 @@ function renderItems(items, focusCategory){
           <div class="dyn-title">${escapeHtml(item.title)}</div>
           <div class="dyn-cat">${item.category}</div>
         </div>
-        ${deleteHTML}
+        ${isLoggedIn ? `<div class="dyn-delete" data-id="${item.id || item.date}"><i class="fa-solid fa-trash-can"></i></div>` : ''}
       `;
-      if (isLoggedIn) {
-        const deleteBtn = dynItem.querySelector('.dyn-delete');
-        if (deleteBtn) deleteBtn.addEventListener('click', e => { e.stopPropagation(); deleteItemById(deleteBtn.getAttribute('data-id')); });
-      }
       grid.appendChild(dynItem);
     });
   });
   updateStatTotal(items.length);
   if (focusCategory) switchToItemTab(focusCategory);
 }
+
+document.body.addEventListener('click', e => {
+  const btn = e.target.closest('.dyn-delete');
+  if (!btn) return;
+  e.stopPropagation();
+  if (!isLoggedIn) return;
+  deleteItemById(btn.getAttribute('data-id'));
+});
 
 async function loadDynamicGFX(){
   const items = await fetchRemoteItems();
@@ -568,17 +574,27 @@ async function loadDynamicGFX(){
 
 function updateStatTotal(dynamicCount){ document.getElementById('statTotal').textContent = (50 + dynamicCount) + '+'; }
 
+function showToast(msg, type){
+  const t = document.getElementById('globalToast');
+  t.textContent = msg;
+  t.className = 'global-toast' + (type === 'err' ? ' err' : '') + ' show';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.classList.remove('show'); }, 3000);
+}
+
 async function deleteItemById(id){
-  if (!getGhToken()) { showAdminStatus('GitHub Token fehlt!', 'err'); return; }
-  showAdminStatus('Deleting…', 'ok');
+  const token = getGhToken();
+  if (!token) { showToast('GitHub Token fehlt!', 'err'); openAdminPanel(); return; }
+  showToast('Deleting…', '');
   try {
     const {items, sha} = await ghGetFile();
     const newItems = items.filter(item => (item.id || item.date).toString() !== id.toString());
+    if (newItems.length === items.length) { showToast('Item nicht gefunden', 'err'); return; }
     await ghPutFile(newItems, sha);
     renderItems(newItems);
-    showAdminStatus('✓ Gelöscht', 'ok');
+    showToast('✓ Gelöscht', '');
   } catch(e) {
-    showAdminStatus('Fehler: ' + e.message, 'err');
+    showToast('Fehler: ' + e.message, 'err');
   }
 }
 function escapeHtml(str){ return str.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]||m)); }
