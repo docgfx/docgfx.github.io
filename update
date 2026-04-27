@@ -228,7 +228,7 @@ footer a:hover{color:#fff}
   <div class="hero-img"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <img class="logo-img" src="https://cdn.discordapp.com/attachments/1496247584531153017/1496247633021243553/IMG_7228.png?ex=69edcdf2&is=69ec7c72&hm=5b5006cafa2e239997353a11970ba3cf2912902c8912a03b8349e8bb8f07e68e&" alt="DocGFX Logo" loading="eager">
+    <img class="logo-img" src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/IMG_7228.png" alt="DocGFX Logo" loading="eager">
     <div class="badge"><i class="fa-solid fa-bolt" style="font-size:8px"></i> <span data-t="badge">Premium Graphics Studio</span></div>
     <h1>Doc<em>GFX</em></h1>
     <p class="hero-sub" data-t="heroSub">Websites · Logos · Banners · Thumbnails · Product Boxes</p>
@@ -276,10 +276,10 @@ footer a:hover{color:#fff}
     <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
   </div>
   <div class="img-grid" id="grid-logos">
-    <div class="img-item"><img src="https://i.imgur.com/MRKnheS.png" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
-    <div class="img-item"><img src="https://i.imgur.com/nynX8PB.png" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div>
-    <div class="img-item"><img src="https://i.imgur.com/XCXYx5W.png" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div>
-    <div class="img-item"><img src="https://i.imgur.com/qxKxymB.gif" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div>
+    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/ws_logo.png" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
+    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Sellauth-Logo-EngineX.png" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div>
+    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/VS-Xmas_no_bg.png" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div>
+    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Final_Comp_2.gif" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div>
   </div>
 </section>
 <div class="divider"></div>
@@ -307,7 +307,7 @@ footer a:hover{color:#fff}
     <div class="sub-section-label" data-t="subServerBanners">Server Banners — <span style="color:var(--muted2)">€15</span></div>
     <div class="img-grid" id="grid-server-banners">
       <div class="img-item wide"><img src="https://i.imgur.com/GPJg8TG.png" loading="lazy" alt="DarkChair"><div class="img-overlay"><span class="overlay-label">DarkChair</span></div></div>
-      <div class="img-item wide"><img src="https://i.imgur.com/Zf9ZlgB.gif" loading="lazy" alt="Server Banner"><div class="img-overlay"><span class="overlay-label">Server Banner</span></div></div>
+      <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/banner.png" loading="lazy" alt="Server Banner"><div class="img-overlay"><span class="overlay-label">Server Banner</span></div></div>
     </div>
   </div>
 
@@ -392,9 +392,9 @@ footer a:hover{color:#fff}
     <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
   </div>
   <div class="img-grid" id="grid-thumbnails">
-    <div class="img-item wide"><img src="https://i.imgur.com/UtK0BJ7.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
-    <div class="img-item wide"><img src="https://i.imgur.com/6BNh3L5.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
-    <div class="img-item wide"><img src="https://i.imgur.com/E7UcBxm.jpeg" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thmb1.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thumb2.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thumb3.png loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
   </div>
 </section>
 
