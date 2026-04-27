@@ -69,8 +69,9 @@ h1 em{font-style:normal;color:var(--muted)}
 .divider{height:1px;background:var(--border)}
 
 /* Sub-section tabs for Banners */
-.sub-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
-.sub-tab{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;padding:7px 15px;border-radius:100px;cursor:pointer;transition:all 0.18s}
+.sub-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+.sub-tabs::-webkit-scrollbar{display:none}
+.sub-tab{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;padding:7px 15px;border-radius:100px;cursor:pointer;transition:all 0.18s;white-space:nowrap;flex-shrink:0}
 .sub-tab:hover{border-color:var(--border-h);color:#fff}
 .sub-tab.active{background:#fff;color:#000;border-color:#fff}
 
@@ -198,13 +199,76 @@ footer a:hover{color:#fff}
 #panel-product-cards-panel .dyn-item{aspect-ratio:16/9}
 #panel-product-cards-panel .product-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 
-@media(max-width:640px){
-  .img-item.wide{grid-column:span 1;aspect-ratio:1/1}
-  .stat{min-width:80px;padding:0 .75rem}
-  .cta{padding:44px 20px;margin:0 1.25rem 60px}
-  .section,.dynamic-section{padding-left:1.25rem;padding-right:1.25rem}
-  nav{padding:14px 16px}
-  .logo-img{width:80px;height:80px;padding:10px}
+@media(max-width:768px){
+  nav{padding:12px 16px}
+  .nav-logo{font-size:15px}
+  .lang-btn{padding:3px 9px;font-size:10px}
+  .admin-link{padding:4px 10px;font-size:10px}
+
+  .hero{padding:1.25rem;padding-top:70px;min-height:100svh}
+  .logo-img{width:80px;height:80px;padding:10px;margin-bottom:1.1rem}
+  h1{font-size:clamp(42px,14vw,72px);margin-bottom:0.9rem}
+  .hero-sub{font-size:13px;margin-bottom:1.75rem}
+  .hero-actions{gap:8px}
+  .btn-primary,.btn-ghost{padding:11px 20px;font-size:11px}
+
+  .stats-bar{gap:0;padding:14px 1rem}
+  .stat{min-width:0;padding:0 0.6rem;flex:1}
+  .stat-num{font-size:18px}
+  .stat-label{font-size:9px}
+
+  .section{padding:48px 1.1rem}
+  .section-header{margin-bottom:22px;gap:10px}
+  .section-title{font-size:22px}
+  .section-tag{font-size:9px}
+
+  .sub-tabs{gap:6px;margin-bottom:18px}
+  .sub-tab{padding:6px 12px;font-size:10px}
+
+  .video-grid{grid-template-columns:1fr;gap:12px}
+  .video-card{aspect-ratio:16/9}
+
+  .img-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .img-item.wide{grid-column:span 2;aspect-ratio:16/9}
+
+  #panel-profile-banners .img-grid{grid-template-columns:1fr}
+  #panel-embed-banners .img-grid{grid-template-columns:1fr}
+  #panel-signatures .img-grid{grid-template-columns:1fr}
+
+  .product-grid{grid-template-columns:1fr 1fr;gap:8px}
+  #panel-product-cards-panel .product-grid{grid-template-columns:1fr}
+
+  .dyn-delete{opacity:1}
+
+  .cta{padding:36px 18px;margin:0 1rem 48px;border-radius:16px}
+  .cta-title{font-size:clamp(22px,6vw,32px)}
+  .cta-sub{font-size:13px;margin-bottom:20px}
+
+  footer{padding:18px 1rem;gap:10px;font-size:10px;flex-wrap:wrap;justify-content:center}
+
+  .admin-panel{padding:20px 16px;border-radius:16px;max-height:92vh}
+  .login-panel{padding:24px 18px}
+
+  .global-toast{font-size:11px;padding:8px 16px;bottom:16px;max-width:90vw;white-space:normal;text-align:center}
+}
+
+@media(hover:none){
+  .dyn-delete{opacity:1}
+  .img-item:hover img{filter:grayscale(80%) brightness(0.85);transform:none}
+  .img-item:active img{filter:grayscale(20%) brightness(1)}
+  .img-item:hover .img-overlay{opacity:0}
+  .img-item:active .img-overlay{opacity:1}
+  .dyn-item:hover img{filter:grayscale(60%);transform:none}
+  .dyn-item:active img{filter:grayscale(0%)}
+  .dyn-item:hover .dyn-meta{opacity:0}
+  .dyn-item:active .dyn-meta{opacity:1}
+}
+
+@media(max-width:400px){
+  .img-grid{grid-template-columns:1fr}
+  .img-item.wide{grid-column:span 1;aspect-ratio:16/9}
+  .product-grid{grid-template-columns:1fr}
+  .stat-label{display:none}
 }
 </style>
 </head>
@@ -276,10 +340,10 @@ footer a:hover{color:#fff}
     <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
   </div>
   <div class="img-grid" id="grid-logos">
-    <div class="img-item"><img src="https://i.imgur.com/MRKnheS.png" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
-    <div class="img-item"><img src="https://i.imgur.com/nynX8PB.png" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div>
-    <div class="img-item"><img src="https://i.imgur.com/XCXYx5W.png" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div>
-    <div class="img-item"><img src="https://i.imgur.com/qxKxymB.gif" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div>
+    <div class="img-item"><img src="https://media.discordapp.net/attachments/1403170169437683842/1403210394495090778/ws_logo.png?ex=69ed7f04&is=69ec2d84&hm=225c68fca701edf2d2370899a569f5e8c2c8ae66e5977bdbc5abbbfab2ec311c&=&format=webp&quality=lossless&width=1250&height=1282" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
+    <div class="img-item"><img src="https://media.discordapp.net/attachments/1403170169437683842/1439464035639627899/Sellauth-Logo-EngineX.png?ex=69ed8cda&is=69ec3b5a&hm=ca9bd70e0ecaad43b179b4d49b5b700bfe0c888a7ba8d742fe48e4e738ba44dc&=&format=webp&quality=lossless&width=1282&height=1282" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div>
+    <div class="img-item"><img src="https://cdn.discordapp.com/attachments/1403170169437683842/1439464036117909675/VS-Xmas_no_bg.png?ex=69ed8cda&is=69ec3b5a&hm=ec61efa1638567e495a37a1b90de59bbf12fb598fa7f3155f2ca6949bc4e4840&" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div>
+    <div class="img-item"><img src="https://cdn.discordapp.com/attachments/1403170169437683842/1440412914132713674/Final_Comp_2.gif?ex=69edb4d0&is=69ec6350&hm=85f9de239efa7d634d0a8a3443cfee8a24a344000d7cffd2e291195afb17ca7d&" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div>
   </div>
 </section>
 <div class="divider"></div>
@@ -306,8 +370,8 @@ footer a:hover{color:#fff}
   <div class="sub-panel active" id="panel-server-banners">
     <div class="sub-section-label" data-t="subServerBanners">Server Banners — <span style="color:var(--muted2)">€15</span></div>
     <div class="img-grid" id="grid-server-banners">
-      <div class="img-item wide"><img src="https://i.imgur.com/GPJg8TG.png" loading="lazy" alt="DarkChair"><div class="img-overlay"><span class="overlay-label">DarkChair</span></div></div>
-      <div class="img-item wide"><img src="https://i.imgur.com/Zf9ZlgB.gif" loading="lazy" alt="Server Banner"><div class="img-overlay"><span class="overlay-label">Server Banner</span></div></div>
+      <div class="img-item wide"><img src="https://media.discordapp.net/attachments/1427005539094630462/1479919850032861366/banner.png?ex=69edbb03&is=69ec6983&hm=466c7f5df550ea76f08d47870d1d113d7c67bc21a64ce5ef6bf6d2cc06455faa&=&format=webp&quality=lossless&width=1920&height=1080" loading="lazy" alt="DarkChair"><div class="img-overlay"><span class="overlay-label">DarkChair</span></div></div>
+      <div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1427005539094630462/1440970943332618351/EngineX.gif?ex=69edc244&is=69ec70c4&hm=143076c5e730bee4698a137bf6dfe82bccf9f7995f60d3e0ac3c80fdaf091ae9&" loading="lazy" alt="Server Banner"><div class="img-overlay"><span class="overlay-label">Server Banner</span></div></div>
     </div>
   </div>
 
@@ -355,19 +419,19 @@ footer a:hover{color:#fff}
     <div class="sub-section-label" data-t="subProductBoxes">Product Boxes — <span style="color:var(--muted2)">€3</span></div>
     <div class="product-grid" id="grid-boxes">
       <div class="product-item">
-        <img src="https://i.imgur.com/PCVWDDu.png" loading="lazy" alt="Omega">
+        <img src="https://media.discordapp.net/attachments/1403210515307565116/1451238374659588148/Box-New.png?ex=69ed89cf&is=69ec384f&hm=6b4b1b63e34af0bcd5ba3a30f7ac70e7ff9399d83ea2df2e35ff2f87a9449a36&=&format=webp&quality=lossless&width=1282&height=1282" loading="lazy" alt="Omega">
         <div class="product-type-badge">Box</div>
       </div>
       <div class="product-item">
-        <img src="https://i.imgur.com/m8Q7utv.png" loading="lazy" alt="Box New">
+        <img src="https://media.discordapp.net/attachments/1403210515307565116/1480967045007802418/Hise-Cod-no-bg.png?ex=69ed95ca&is=69ec444a&hm=31b0c0c540626974b1ff4eaf9dcc2819a9eeb566153242d943e90424e05b79a9&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="Box New">
         <div class="product-type-badge">Box</div>
       </div>
       <div class="product-item">
-        <img src="https://i.imgur.com/rk3aPke.png" loading="lazy" alt="UA">
+        <img src="https://media.discordapp.net/attachments/1403210515307565116/1480967046669008906/Crunchy-Box-no-bg.png?ex=69ed95ca&is=69ec444a&hm=10999ac546f4a21754bda39b60bf0b31f1164da75155e6c7ad502885d81dac3c&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="UA">
         <div class="product-type-badge">Box</div>
       </div>
       <div class="product-item">
-        <img src="https://i.imgur.com/1Fg35JR.png" loading="lazy" alt="Rust Int">
+        <img src="https://media.discordapp.net/attachments/1403210515307565116/1458399313888805038/Rust-Int.png?ex=69ede1b4&is=69ec9034&hm=2e0cb657bd9f99376bd67d07d60e454a389c8fc4408280ce664b509e5c7cd46e&=&format=webp&quality=lossless&width=2170&height=1282" loading="lazy" alt="Rust Int">
         <div class="product-type-badge">Box</div>
       </div>
     </div>
@@ -392,9 +456,9 @@ footer a:hover{color:#fff}
     <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
   </div>
   <div class="img-grid" id="grid-thumbnails">
-    <div class="img-item wide"><img src="https://i.imgur.com/UtK0BJ7.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
-    <div class="img-item wide"><img src="https://i.imgur.com/6BNh3L5.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
-    <div class="img-item wide"><img src="https://i.imgur.com/E7UcBxm.jpeg" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    <div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1487535591418495077/thumbn.png?ex=69edc03a&is=69ec6eba&hm=3a69bb05d41fb8e32a1b147a22134c93863e4df10920fedec9fcd4ce9057663e&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    <div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1480634711998201978/thumbn.png?ex=69edb1c8&is=69ec6048&hm=09b170da88088d832a1f0b77e052d3d11f76378c6dfb1a6fdb568c63bd32b53b&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    <div class="img-item wide"><img src="https://cdn.discordapp.com/attachments/1424028192527749201/1424546285595262996/image.png?ex=69ed551d&is=69ec039d&hm=23c60d419c4c2fb43595fd9aa8731e10dae1dbba6b26102292c216894992ba1d&" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
   </div>
 </section>
 
