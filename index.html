@@ -136,6 +136,39 @@ h1 em{font-style:normal;color:var(--muted)}
 .empty-placeholder{padding:44px 20px;text-align:center;color:var(--muted);font-size:13px;border:1px dashed var(--border);border-radius:var(--radius);min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .empty-placeholder i{font-size:20px;opacity:0.35}
 
+/* ── PROCESS ── */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden}
+.process-step{background:var(--bg);padding:28px 24px;position:relative}
+.process-step:hover{background:var(--surface)}
+.process-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:0.12em;margin-bottom:14px;display:block}
+.process-icon{width:36px;height:36px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--muted2);font-size:14px}
+.process-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-0.01em}
+.process-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ── REVIEWS ── */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.review-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;transition:border-color 0.22s}
+.review-card:hover{border-color:var(--border-h)}
+.review-stars{display:flex;gap:3px;color:#fff;font-size:11px}
+.review-text{font-size:13px;color:var(--muted2);line-height:1.6;flex:1}
+.review-author{display:flex;align-items:center;gap:10px;margin-top:4px}
+.review-avatar{width:30px;height:30px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:11px;font-weight:800;color:var(--muted2);flex-shrink:0}
+.review-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fff}
+.review-type{font-size:10px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:1px;border:1px solid var(--border);border-radius:18px;overflow:hidden}
+.faq-item{background:var(--bg)}
+.faq-item:hover{background:var(--surface)}
+.faq-question{width:100%;background:none;border:none;color:#fff;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;letter-spacing:-0.01em;padding:20px 24px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;-webkit-tap-highlight-color:transparent;transition:color 0.18s}
+.faq-question:hover{color:#fff}
+.faq-chevron{color:var(--muted);font-size:11px;transition:transform 0.28s ease,color 0.18s;flex-shrink:0}
+.faq-item.open .faq-chevron{transform:rotate(180deg);color:#fff}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.32s ease}
+.faq-answer-inner{padding:0 24px 20px;color:var(--muted2);font-size:13px;line-height:1.7;border-top:1px solid var(--border)}
+.faq-item.open .faq-answer{max-height:300px}
+.faq-divider{height:1px;background:var(--border)}
+
 .cta{margin:0 2rem 80px;max-width:1100px;margin-left:auto;margin-right:auto;padding:64px 40px;text-align:center;border-radius:20px;border:1px solid var(--border);background:var(--surface);position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:400px;height:250px;background:radial-gradient(ellipse,rgba(255,255,255,0.04) 0%,transparent 70%);pointer-events:none}
 .cta-title{font-family:'Syne',sans-serif;font-size:clamp(26px,4.5vw,44px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;position:relative}
@@ -213,9 +246,7 @@ footer a:hover{color:#fff}
   .section-title{font-size:20px}
 
   .sub-tab{padding:6px 13px;font-size:10px}
-
   .video-grid{grid-template-columns:1fr;gap:10px}
-
   .img-grid{grid-template-columns:1fr 1fr;gap:8px}
   .img-item.wide{grid-column:span 2;aspect-ratio:16/9}
 
@@ -232,17 +263,24 @@ footer a:hover{color:#fff}
 
   .dyn-delete{opacity:1;width:28px;height:28px;font-size:10px}
 
+  .process-grid{grid-template-columns:1fr 1fr}
+  .process-step{padding:20px 18px}
+  .process-title{font-size:13px}
+
+  .reviews-grid{grid-template-columns:1fr;gap:10px}
+
+  .faq-question{padding:16px 18px;font-size:13px}
+  .faq-answer-inner{padding:0 18px 16px}
+
   .cta{padding:36px 18px;margin:0 1rem 48px;border-radius:16px}
   .cta-title{font-size:clamp(22px,6vw,30px)}
   .cta-sub{font-size:13px;margin-bottom:18px}
 
   footer{padding:16px 1rem;gap:10px;font-size:10px}
-
   .admin-panel{padding:20px 16px;border-radius:16px;max-height:92svh}
   .admin-btn-row{gap:8px}
   .btn-sm{padding:9px 13px;font-size:10px}
   .login-panel{padding:24px 16px}
-
   .global-toast{bottom:16px;font-size:11px;padding:9px 18px}
 }
 
@@ -251,6 +289,7 @@ footer a:hover{color:#fff}
   .img-grid{grid-template-columns:1fr}
   .img-item.wide{grid-column:span 1;aspect-ratio:16/9}
   .product-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr}
 }
 
 @media(hover:none){
@@ -427,6 +466,122 @@ footer a:hover{color:#fff}
     <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thumb3.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
   </div>
 </section>
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section reveal" id="sec-process">
+  <div class="section-header">
+    <div>
+      <span class="section-tag" data-t="secProcessTag">How it works</span>
+      <h2 class="section-title" data-t="secProcessTitle">Order in<br>4 simple steps</h2>
+    </div>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <span class="process-num">01</span>
+      <div class="process-icon"><i class="fa-brands fa-discord"></i></div>
+      <div class="process-title" data-t="step1Title">Join Discord</div>
+      <div class="process-desc" data-t="step1Desc">Join the DocGFX Discord server and open a ticket in the orders channel.</div>
+    </div>
+    <div class="process-step">
+      <span class="process-num">02</span>
+      <div class="process-icon"><i class="fa-solid fa-pen-nib"></i></div>
+      <div class="process-title" data-t="step2Title">Share your idea</div>
+      <div class="process-desc" data-t="step2Desc">Describe what you need — colors, style, references. The more detail, the better the result.</div>
+    </div>
+    <div class="process-step">
+      <span class="process-num">03</span>
+      <div class="process-icon"><i class="fa-solid fa-credit-card"></i></div>
+      <div class="process-title" data-t="step3Title">Pay & confirm</div>
+      <div class="process-desc" data-t="step3Desc">Agree on the price and pay via PayPal or crypto. Work starts right after confirmation.</div>
+    </div>
+    <div class="process-step">
+      <span class="process-num">04</span>
+      <div class="process-icon"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+      <div class="process-title" data-t="step4Title">Receive your GFX</div>
+      <div class="process-desc" data-t="step4Desc">Get your finished file delivered directly in Discord, usually within 24–48 hours.</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section class="section reveal" id="sec-reviews">
+  <div class="section-header">
+    <div>
+      <span class="section-tag" data-t="secReviewsTag">Reviews</span>
+      <h2 class="section-title" data-t="secReviewsTitle">What clients<br>are saying</h2>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <div class="review-text">"Ordered a product box and got it back within a few hours. Exactly what I had in mind — clean, sharp, and professional. Will definitely order again."</div>
+      <div class="review-author">
+        <div class="review-avatar">MX</div>
+        <div><div class="review-name">MaxX</div><div class="review-type">Product Box</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <div class="review-text">"Got a full server banner with a custom animation. The quality is insane for the price. Communication was fast and he nailed the vibe instantly."</div>
+      <div class="review-author">
+        <div class="review-avatar">NX</div>
+        <div><div class="review-name">Noilcheats</div><div class="review-type">Server Banner</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <div class="review-text">"The website theme is exactly what I needed. Super clean design, easy to set up, and it looks way more premium than anything else in this price range."</div>
+      <div class="review-author">
+        <div class="review-avatar">EX</div>
+        <div><div class="review-name">EngineX</div><div class="review-type">Website Theme</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section reveal" id="sec-faq">
+  <div class="section-header">
+    <div>
+      <span class="section-tag" data-t="secFaqTag">FAQ</span>
+      <h2 class="section-title" data-t="secFaqTitle">Frequently asked<br>questions</h2>
+    </div>
+  </div>
+  <div class="faq-list" id="faqList">
+    <div class="faq-item">
+      <button class="faq-question"><span data-t="faq1q">How long does an order take?</span><i class="fa-solid fa-chevron-down faq-chevron"></i></button>
+      <div class="faq-answer"><div class="faq-answer-inner" data-t="faq1a">Most orders are delivered within 24–48 hours. Complex projects like animated banners or full website themes may take a bit longer. You'll always get an estimated delivery time when placing your order.</div></div>
+    </div>
+    <div class="faq-divider"></div>
+    <div class="faq-item">
+      <button class="faq-question"><span data-t="faq2q">What payment methods are accepted?</span><i class="fa-solid fa-chevron-down faq-chevron"></i></button>
+      <div class="faq-answer"><div class="faq-answer-inner" data-t="faq2a">PayPal (Friends & Family) and crypto are accepted. Payment is required upfront before work begins.</div></div>
+    </div>
+    <div class="faq-divider"></div>
+    <div class="faq-item">
+      <button class="faq-question"><span data-t="faq3q">Can I request revisions?</span><i class="fa-solid fa-chevron-down faq-chevron"></i></button>
+      <div class="faq-answer"><div class="faq-answer-inner" data-t="faq3a">Yes — minor adjustments like color tweaks or text changes are included. Major redesigns may incur an additional fee depending on scope.</div></div>
+    </div>
+    <div class="faq-divider"></div>
+    <div class="faq-item">
+      <button class="faq-question"><span data-t="faq4q">What format will I receive my files in?</span><i class="fa-solid fa-chevron-down faq-chevron"></i></button>
+      <div class="faq-answer"><div class="faq-answer-inner" data-t="faq4a">Files are delivered in PNG (with transparent background where applicable), GIF for animations, or the project source file depending on what was ordered. Just ask if you need a specific format.</div></div>
+    </div>
+    <div class="faq-divider"></div>
+    <div class="faq-item">
+      <button class="faq-question"><span data-t="faq5q">Do you offer refunds?</span><i class="fa-solid fa-chevron-down faq-chevron"></i></button>
+      <div class="faq-answer"><div class="faq-answer-inner" data-t="faq5a">Refunds are only issued if the work has not started yet. Once production begins, no refunds are given — this protects the time invested in your order.</div></div>
+    </div>
+    <div class="faq-divider"></div>
+    <div class="faq-item">
+      <button class="faq-question"><span data-t="faq6q">Can I use the GFX commercially?</span><i class="fa-solid fa-chevron-down faq-chevron"></i></button>
+      <div class="faq-answer"><div class="faq-answer-inner" data-t="faq6a">Yes, all delivered work is yours to use however you like — for your server, shop, YouTube channel, or any other project. No attribution required.</div></div>
+    </div>
+  </div>
+</section>
 
 <div class="cta reveal">
   <h2 class="cta-title" data-t="ctaTitle">Ready for your next<br><span style="color:var(--muted)">Project?</span></h2>
@@ -501,10 +656,77 @@ const ALLOWED_USER_ID='1294570988788518975';
 const REDIRECT_URI=window.location.origin+window.location.pathname;
 let isLoggedIn=false;
 
-const T={en:{badge:"Premium Graphics Studio",heroSub:"Websites · Logos · Banners · Thumbnails · Products",joinDiscord:"Join Discord",viewPortfolio:"View Portfolio",adminLink:"Admin",statProjects:"Projects",statFrom:"Starting From",statThemes:"Themes",statRating:"Rating",secWebsites:"Websites",secWebsitesTitle:"Custom Website<br>Themes",secLogos:"Logos",secLogosTitle:"Brand Identity<br>& Logos",secBanners:"Banners",secBannersTitle:"Banners",secProducts:"Products",secProductsTitle:"Product<br>Artwork",secThumbs:"Thumbnails",secThumbsTitle:"YouTube<br>Thumbnails",ctaTitle:"Ready for your next<br><span style='color:var(--muted)'>Project?</span>",ctaSub:"Join the Discord and order your custom GFX directly.",bannerFromPrice:"from €10",productFromPrice:"from €3",subServerBanners:"Server Banners",subProfileBanners:"Profile Banners",subEmbedBanners:"Embed Banners",subSignatures:"Signatures",subProductBoxes:"Product Boxes",subProductCards:"Product Cards"},de:{badge:"Premium Graphics Studio",heroSub:"Websites · Logos · Banner · Thumbnails · Produkte",joinDiscord:"Discord beitreten",viewPortfolio:"Portfolio ansehen",adminLink:"Admin",statProjects:"Projekte",statFrom:"Ab Preis",statThemes:"Themes",statRating:"Bewertung",secWebsites:"Websites",secWebsitesTitle:"Individuelle<br>Website Themes",secLogos:"Logos",secLogosTitle:"Markenidentität<br>& Logos",secBanners:"Banner",secBannersTitle:"Banner",secProducts:"Produkte",secProductsTitle:"Produkt<br>Artwork",secThumbs:"Thumbnails",secThumbsTitle:"YouTube<br>Thumbnails",ctaTitle:"Bereit für dein<br>nächstes <span style='color:var(--muted)'>Projekt?</span>",ctaSub:"Tritt dem Discord bei und bestell direkt dein Custom GFX.",bannerFromPrice:"ab €10",productFromPrice:"ab €3",subServerBanners:"Server Banner",subProfileBanners:"Profil Banner",subEmbedBanners:"Embed Banner",subSignatures:"Signaturen",subProductBoxes:"Produkt Boxen",subProductCards:"Produkt Karten"}};
+const T={
+  en:{
+    badge:"Premium Graphics Studio",heroSub:"Websites · Logos · Banners · Thumbnails · Products",
+    joinDiscord:"Join Discord",viewPortfolio:"View Portfolio",adminLink:"Admin",
+    statProjects:"Projects",statFrom:"Starting From",statThemes:"Themes",statRating:"Rating",
+    secWebsites:"Websites",secWebsitesTitle:"Custom Website<br>Themes",
+    secLogos:"Logos",secLogosTitle:"Brand Identity<br>& Logos",
+    secBanners:"Banners",secBannersTitle:"Banners",
+    secProducts:"Products",secProductsTitle:"Product<br>Artwork",
+    secThumbs:"Thumbnails",secThumbsTitle:"YouTube<br>Thumbnails",
+    secProcessTag:"How it works",secProcessTitle:"Order in<br>4 simple steps",
+    step1Title:"Join Discord",step1Desc:"Join the DocGFX Discord server and open a ticket in the orders channel.",
+    step2Title:"Share your idea",step2Desc:"Describe what you need — colors, style, references. The more detail, the better the result.",
+    step3Title:"Pay & confirm",step3Desc:"Agree on the price and pay via PayPal or crypto. Work starts right after confirmation.",
+    step4Title:"Receive your GFX",step4Desc:"Get your finished file delivered directly in Discord, usually within 24–48 hours.",
+    secReviewsTag:"Reviews",secReviewsTitle:"What clients<br>are saying",
+    secFaqTag:"FAQ",secFaqTitle:"Frequently asked<br>questions",
+    faq1q:"How long does an order take?",faq1a:"Most orders are delivered within 24–48 hours. Complex projects like animated banners or full website themes may take a bit longer. You'll always get an estimated delivery time when placing your order.",
+    faq2q:"What payment methods are accepted?",faq2a:"PayPal (Friends & Family) and crypto are accepted. Payment is required upfront before work begins.",
+    faq3q:"Can I request revisions?",faq3a:"Yes — minor adjustments like color tweaks or text changes are included. Major redesigns may incur an additional fee depending on scope.",
+    faq4q:"What format will I receive my files in?",faq4a:"Files are delivered in PNG (with transparent background where applicable), GIF for animations, or the project source file. Just ask if you need a specific format.",
+    faq5q:"Do you offer refunds?",faq5a:"Refunds are only issued if the work has not started yet. Once production begins, no refunds are given — this protects the time invested in your order.",
+    faq6q:"Can I use the GFX commercially?",faq6a:"Yes, all delivered work is yours to use however you like — for your server, shop, YouTube channel, or any other project. No attribution required.",
+    ctaTitle:"Ready for your next<br><span style='color:var(--muted)'>Project?</span>",ctaSub:"Join the Discord and order your custom GFX directly.",
+    bannerFromPrice:"from €10",productFromPrice:"from €3",
+    subServerBanners:"Server Banners",subProfileBanners:"Profile Banners",subEmbedBanners:"Embed Banners",subSignatures:"Signatures",subProductBoxes:"Product Boxes",subProductCards:"Product Cards"
+  },
+  de:{
+    badge:"Premium Graphics Studio",heroSub:"Websites · Logos · Banner · Thumbnails · Produkte",
+    joinDiscord:"Discord beitreten",viewPortfolio:"Portfolio ansehen",adminLink:"Admin",
+    statProjects:"Projekte",statFrom:"Ab Preis",statThemes:"Themes",statRating:"Bewertung",
+    secWebsites:"Websites",secWebsitesTitle:"Individuelle<br>Website Themes",
+    secLogos:"Logos",secLogosTitle:"Markenidentität<br>& Logos",
+    secBanners:"Banner",secBannersTitle:"Banner",
+    secProducts:"Produkte",secProductsTitle:"Produkt<br>Artwork",
+    secThumbs:"Thumbnails",secThumbsTitle:"YouTube<br>Thumbnails",
+    secProcessTag:"So funktioniert's",secProcessTitle:"Bestellen in<br>4 einfachen Schritten",
+    step1Title:"Discord beitreten",step1Desc:"Tritt dem DocGFX Discord-Server bei und eröffne ein Ticket im Bestellkanal.",
+    step2Title:"Idee teilen",step2Desc:"Beschreibe was du brauchst — Farben, Stil, Referenzen. Je mehr Details, desto besser das Ergebnis.",
+    step3Title:"Bezahlen & bestätigen",step3Desc:"Preis absprechen und per PayPal oder Krypto zahlen. Die Arbeit beginnt direkt danach.",
+    step4Title:"GFX erhalten",step4Desc:"Deine fertige Datei wird direkt in Discord geliefert, meist innerhalb von 24–48 Stunden.",
+    secReviewsTag:"Bewertungen",secReviewsTitle:"Was Kunden<br>sagen",
+    secFaqTag:"FAQ",secFaqTitle:"Häufig gestellte<br>Fragen",
+    faq1q:"Wie lange dauert eine Bestellung?",faq1a:"Die meisten Bestellungen werden innerhalb von 24–48 Stunden geliefert. Komplexere Projekte wie animierte Banner oder vollständige Website-Themes können etwas länger dauern.",
+    faq2q:"Welche Zahlungsmethoden werden akzeptiert?",faq2a:"PayPal (Freunde & Familie) und Krypto werden akzeptiert. Die Zahlung erfolgt im Voraus, bevor die Arbeit beginnt.",
+    faq3q:"Kann ich Überarbeitungen anfragen?",faq3a:"Ja — kleinere Anpassungen wie Farbänderungen oder Textkorrekturen sind inklusive. Größere Umgestaltungen können je nach Aufwand einen Aufpreis kosten.",
+    faq4q:"In welchem Format erhalte ich meine Dateien?",faq4a:"Dateien werden als PNG (mit transparentem Hintergrund wo möglich), GIF für Animationen oder als Projektdatei geliefert. Einfach fragen wenn ein bestimmtes Format benötigt wird.",
+    faq5q:"Gibt es Rückerstattungen?",faq5a:"Rückerstattungen werden nur gewährt, wenn die Arbeit noch nicht begonnen hat. Sobald die Produktion läuft, gibt es keine Rückerstattungen — das schützt die investierte Zeit.",
+    faq6q:"Darf ich die GFX kommerziell nutzen?",faq6a:"Ja, alle gelieferten Werke gehören dir — für deinen Server, Shop, YouTube-Kanal oder andere Projekte. Keine Namensnennung erforderlich.",
+    ctaTitle:"Bereit für dein<br>nächstes <span style='color:var(--muted)'>Projekt?</span>",ctaSub:"Tritt dem Discord bei und bestell direkt dein Custom GFX.",
+    bannerFromPrice:"ab €10",productFromPrice:"ab €3",
+    subServerBanners:"Server Banner",subProfileBanners:"Profil Banner",subEmbedBanners:"Embed Banner",subSignatures:"Signaturen",subProductBoxes:"Produkt Boxen",subProductCards:"Produkt Karten"
+  }
+};
 let lang='en';
-function applyLang(l){lang=l;const t=T[l];document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(t[k]!==undefined)el.innerHTML=t[k];});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));document.documentElement.lang=l;}
+function applyLang(l){
+  lang=l;const t=T[l];
+  document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(t[k]!==undefined)el.innerHTML=t[k];});
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  document.documentElement.lang=l;
+}
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+
+document.getElementById('faqList').addEventListener('click',function(e){
+  const btn=e.target.closest('.faq-question');
+  if(!btn)return;
+  const item=btn.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+});
 
 function initTabGroup(id){
   const c=document.getElementById(id);if(!c)return;
@@ -626,10 +848,7 @@ document.getElementById('adminCancelBtn').addEventListener('click',closeAdminPan
 document.getElementById('adminLogoutBtn').addEventListener('click',performLogout);
 adminOverlay.addEventListener('click',e=>{if(e.target===adminOverlay)closeAdminPanel();});
 
-const GH_OWNER='docgfx';
-const GH_REPO='docgfx.github.io';
-const GH_BRANCH='main';
-const GH_FILE='data.json';
+const GH_OWNER='docgfx';const GH_REPO='docgfx.github.io';const GH_BRANCH='main';const GH_FILE='data.json';
 const GH_API=`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`;
 const DEFAULT_WEBHOOK_AVATAR='https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/IMG_7228.png';
 
