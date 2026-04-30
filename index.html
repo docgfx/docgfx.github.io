@@ -795,7 +795,18 @@ document.body.addEventListener('click',e=>{
   deleteItemById(btn.getAttribute('data-id'));
 });
 
-async function loadDynamicGFX(){const items=await fetchRemoteItems();renderItems(items);}
+async function loadDynamicGFX(){
+  const cached=localStorage.getItem('docgfx_items_cache');
+  let cachedItems=[];
+  if(cached){try{cachedItems=JSON.parse(cached);renderItems(cachedItems);}catch{}}
+  const items=await fetchRemoteItems();
+  const remoteNewest=items.length?Math.max(...items.map(i=>i.id||i.date||0)):0;
+  const cacheNewest=cachedItems.length?Math.max(...cachedItems.map(i=>i.id||i.date||0)):0;
+  if(remoteNewest>=cacheNewest){
+    localStorage.setItem('docgfx_items_cache',JSON.stringify(items));
+    renderItems(items);
+  }
+}
 function updateStatTotal(n){document.getElementById('statTotal').textContent=(50+n)+'+';}
 
 function showToast(msg,type){
@@ -813,6 +824,7 @@ async function deleteItemById(id){
     const{items,sha}=await ghGetFile();
     const newItems=items.filter(item=>String(item.id||item.date)!==String(id));
     await ghPutFile(newItems,sha);
+    localStorage.setItem('docgfx_items_cache',JSON.stringify(newItems));
     renderItems(newItems);
     showToast('✓ Gelöscht','');
   }catch(e){showToast('Fehler: '+e.message,'err');}
@@ -915,7 +927,10 @@ async function ghGetFile(){
 }
 
 async function ghPutFile(items,sha){
-  const encoded=btoa(unescape(encodeURIComponent(JSON.stringify({items},null,2))));
+  const json=JSON.stringify({items},null,2);
+  const bytes=new TextEncoder().encode(json);
+  const binStr=Array.from(bytes).map(b=>String.fromCharCode(b)).join('');
+  const encoded=btoa(binStr);
   const body={message:'Update portfolio data',content:encoded,branch:GH_BRANCH};
   if(sha)body.sha=sha;
   let res=await fetch(GH_API,{method:'PUT',headers:{Authorization:'token '+getGhToken(),Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});
@@ -959,6 +974,7 @@ document.getElementById('adminAddBtn').addEventListener('click',async()=>{
     const newId=Date.now();
     items.unshift({id:newId,url,title,category,date:newId});
     await ghPutFile(items.slice(0,100),sha);
+    localStorage.setItem('docgfx_items_cache',JSON.stringify(items.slice(0,100)));
     renderItems(items.slice(0,100),category);
     const sent=await sendToDiscord(title,category,url,`**${title}** added to ${category}`);
     showAdminStatus(sent?'✓ Gespeichert & Discord benachrichtigt!':'✓ Gespeichert auf GitHub!','ok');
