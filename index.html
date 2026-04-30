@@ -824,23 +824,51 @@ const loginOverlay=document.getElementById('loginOverlay');
 function showLogin(){loginOverlay.classList.add('open');}
 function hideLogin(){loginOverlay.classList.remove('open');}
 function startDiscordLogin(){window.location.href='https://discord.com/api/oauth2/authorize?client_id='+DISCORD_CLIENT_ID+'&redirect_uri='+encodeURIComponent(REDIRECT_URI)+'&response_type=token&scope=identify';}
+function verifyDiscordToken(token,onSuccess,onFail){
+  fetch('https://discord.com/api/users/@me',{headers:{'Authorization':'Bearer '+token}})
+    .then(r=>{if(!r.ok)throw new Error();return r.json();})
+    .then(user=>{if(user.id===ALLOWED_USER_ID)onSuccess();else onFail('Access denied.');})
+    .catch(()=>onFail('Failed to verify.'));
+}
+
 function handleAuthCallback(){
   const hash=window.location.hash.substring(1);if(!hash)return;
   const params=new URLSearchParams(hash);
   const accessToken=params.get('access_token');
+  const expiresIn=params.get('expires_in');
   const error=params.get('error');
   if(error){document.getElementById('loginError').textContent='Login cancelled or failed.';document.getElementById('loginError').style.display='block';window.location.hash='';return;}
   if(!accessToken)return;
   window.location.hash='';
-  fetch('https://discord.com/api/users/@me',{headers:{'Authorization':'Bearer '+accessToken}})
-    .then(r=>{if(!r.ok)throw new Error();return r.json();})
-    .then(user=>{
-      if(user.id===ALLOWED_USER_ID){isLoggedIn=true;hideLogin();openAdminPanel();loadDynamicGFX();document.getElementById('loginError').style.display='none';}
-      else{document.getElementById('loginError').textContent='Access denied.';document.getElementById('loginError').style.display='block';}
-    })
-    .catch(()=>{document.getElementById('loginError').textContent='Failed to verify. Try again.';document.getElementById('loginError').style.display='block';});
+  verifyDiscordToken(accessToken,
+    ()=>{
+      isLoggedIn=true;
+      localStorage.setItem('docgfx_discord_token',accessToken);
+      localStorage.setItem('docgfx_discord_expiry',Date.now()+(parseInt(expiresIn||604800)*1000));
+      hideLogin();openAdminPanel();loadDynamicGFX();
+      document.getElementById('loginError').style.display='none';
+    },
+    (msg)=>{document.getElementById('loginError').textContent=msg;document.getElementById('loginError').style.display='block';}
+  );
 }
-function performLogout(){isLoggedIn=false;closeAdminPanel();hideLogin();loadDynamicGFX();}
+
+function tryAutoLogin(){
+  const token=localStorage.getItem('docgfx_discord_token');
+  const expiry=localStorage.getItem('docgfx_discord_expiry');
+  if(!token||!expiry)return;
+  if(Date.now()>parseInt(expiry)){localStorage.removeItem('docgfx_discord_token');localStorage.removeItem('docgfx_discord_expiry');return;}
+  verifyDiscordToken(token,
+    ()=>{isLoggedIn=true;loadDynamicGFX();},
+    ()=>{localStorage.removeItem('docgfx_discord_token');localStorage.removeItem('docgfx_discord_expiry');}
+  );
+}
+
+function performLogout(){
+  isLoggedIn=false;
+  localStorage.removeItem('docgfx_discord_token');
+  localStorage.removeItem('docgfx_discord_expiry');
+  closeAdminPanel();hideLogin();loadDynamicGFX();
+}
 document.getElementById('discordLoginBtn').addEventListener('click',startDiscordLogin);
 document.getElementById('loginError').style.display='none';
 
@@ -953,6 +981,7 @@ const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersec
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 handleAuthCallback();
+tryAutoLogin();
 loadDynamicGFX();
 applyLang('en');
 </script>
