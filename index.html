@@ -112,6 +112,8 @@ h1 em{font-style:normal;color:var(--muted)}
 #panel-embed-banners .dyn-item{aspect-ratio:3/1}
 #panel-signatures .dyn-item{aspect-ratio:728/90}
 #panel-product-cards-panel .dyn-item{aspect-ratio:16/9}
+#grid-thumbnails .dyn-item{aspect-ratio:16/9;grid-column:span 2}
+#grid-server-banners .dyn-item{aspect-ratio:16/9;grid-column:span 2}
 .dyn-item img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(60%);transition:filter 0.3s,transform 0.3s}
 .dyn-item:hover{border-color:var(--border-h);transform:translateY(-3px)}
 .dyn-item:hover img{filter:grayscale(0%);transform:scale(1.03)}
@@ -249,6 +251,8 @@ footer a:hover{color:#fff}
   .video-grid{grid-template-columns:1fr;gap:10px}
   .img-grid{grid-template-columns:1fr 1fr;gap:8px}
   .img-item.wide{grid-column:span 2;aspect-ratio:16/9}
+  #grid-thumbnails .dyn-item{grid-column:span 2;aspect-ratio:16/9}
+  #grid-server-banners .dyn-item{grid-column:span 2;aspect-ratio:16/9}
 
   #panel-profile-banners .img-grid{grid-template-columns:1fr}
   #panel-profile-banners .img-item,#panel-profile-banners .dyn-item{aspect-ratio:5/2}
@@ -288,6 +292,8 @@ footer a:hover{color:#fff}
   h1{font-size:clamp(40px,14vw,58px)}
   .img-grid{grid-template-columns:1fr}
   .img-item.wide{grid-column:span 1;aspect-ratio:16/9}
+  #grid-thumbnails .dyn-item{grid-column:span 1}
+  #grid-server-banners .dyn-item{grid-column:span 1}
   .product-grid{grid-template-columns:1fr}
   .process-grid{grid-template-columns:1fr}
 }
