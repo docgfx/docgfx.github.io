@@ -181,6 +181,18 @@ footer a:hover{color:#fff}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+.back-to-top{position:fixed;bottom:28px;right:28px;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.22s,border-color 0.18s,color 0.18s,transform 0.18s;z-index:400;font-size:12px;-webkit-tap-highlight-color:transparent}
+.back-to-top.visible{opacity:1;pointer-events:all}
+.back-to-top:hover{border-color:var(--border-h);color:#fff;transform:translateY(-2px)}
+.back-to-top:active{transform:scale(0.93)}
+
+.discord-widget{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px 6px 10px;text-decoration:none;transition:border-color 0.18s;cursor:default}
+.discord-widget:hover{border-color:var(--border-h)}
+.discord-online-dot{width:8px;height:8px;border-radius:50%;background:#23a55a;flex-shrink:0;animation:pulse-dot 2.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(35,165,90,0.5)}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(35,165,90,0.5)}50%{box-shadow:0 0 0 5px rgba(35,165,90,0)}}
+.discord-widget-text{font-size:11px;color:var(--muted2);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0.04em}
+.discord-widget-text span{color:#fff}
+
 .global-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:#fff;color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:10px 22px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity 0.22s,transform 0.22s;z-index:500;max-width:88vw;text-align:center;white-space:normal}
 .global-toast.err{background:#ff4444;color:#fff}
 .global-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -308,6 +320,10 @@ footer a:hover{color:#fff}
 <nav>
   <a href="#" class="nav-logo">Doc<span>GFX</span></a>
   <div class="nav-right">
+    <div class="discord-widget" id="discordWidget">
+      <div class="discord-online-dot"></div>
+      <div class="discord-widget-text"><span id="discordOnlineCount">—</span> online</div>
+    </div>
     <div class="lang-toggle">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="de">DE</button>
@@ -559,6 +575,7 @@ footer a:hover{color:#fff}
 </footer>
 
 <div class="global-toast" id="globalToast"></div>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-chevron-up"></i></button>
 
 <div class="login-overlay" id="loginOverlay">
   <div class="login-panel">
@@ -941,6 +958,24 @@ function showAdminStatus(msg,type){
 
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const btt=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+
+const DISCORD_SERVER_ID='1496198144306974720';
+
+async function fetchDiscordOnline(){
+  try{
+    const res=await fetch(`https://discord.com/api/guilds/${DISCORD_SERVER_ID}/widget.json`);
+    if(!res.ok)return;
+    const data=await res.json();
+    if(data.presence_count!==undefined){
+      document.getElementById('discordOnlineCount').textContent=data.presence_count;
+    }
+  }catch{}
+}
+fetchDiscordOnline();
+setInterval(fetchDiscordOnline,60000);
 
 handleAuthCallback();
 tryAutoLogin();
