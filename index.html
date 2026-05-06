@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DocGFX</title>
+<title>DocGFX — Premium Graphics Studio</title>
+<meta name="description" content="Custom websites, logos, banners, thumbnails & product artwork. Starting from €3. Order directly via Discord.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://docgfx.github.io/">
+<meta property="og:title" content="DocGFX — Premium Graphics Studio">
+<meta property="og:description" content="Custom websites, logos, banners, thumbnails & product artwork. Starting from €3. Order directly via Discord.">
+<meta property="og:image" content="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/IMG_7228.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="DocGFX">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DocGFX — Premium Graphics Studio">
+<meta name="twitter:description" content="Custom websites, logos, banners, thumbnails & product artwork. Starting from €3.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/IMG_7228.png">
+
+<meta name="theme-color" content="#060606">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -181,7 +198,17 @@ footer a:hover{color:#fff}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-.back-to-top{position:fixed;bottom:28px;right:28px;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.22s,border-color 0.18s,color 0.18s,transform 0.18s;z-index:400;font-size:12px;-webkit-tap-highlight-color:transparent}
+.music-player{position:fixed;bottom:28px;right:76px;z-index:400;display:flex;align-items:center;gap:8px}
+.music-btn{width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.18s,color 0.18s,transform 0.18s;font-size:16px;-webkit-tap-highlight-color:transparent;user-select:none}
+.music-btn:hover{border-color:var(--border-h);color:#fff;transform:translateY(-2px)}
+.music-btn:active{transform:scale(0.93)}
+.music-btn.playing{border-color:rgba(255,255,255,0.2);color:#fff}
+.music-controls{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 12px;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity 0.2s,transform 0.2s}
+.music-controls.visible{opacity:1;pointer-events:all;transform:translateY(0)}
+.music-vol{-webkit-appearance:none;appearance:none;width:72px;height:3px;border-radius:2px;background:var(--border-h);outline:none;cursor:pointer}
+.music-vol::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer}
+.music-vol::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer;border:none}
+.music-track{font-size:10px;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0.04em;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.22s,border-color 0.18s,color 0.18s,transform 0.18s;z-index:400;font-size:12px;-webkit-tap-highlight-color:transparent}
 .back-to-top.visible{opacity:1;pointer-events:all}
 .back-to-top:hover{border-color:var(--border-h);color:#fff;transform:translateY(-2px)}
 .back-to-top:active{transform:scale(0.93)}
@@ -344,7 +371,7 @@ footer a:hover{color:#fff}
     <h1>Doc<em>GFX</em></h1>
     <p class="hero-sub" data-t="heroSub">Websites · Logos · Banners · Thumbnails · Products</p>
     <div class="hero-actions">
-      <a href="https://discord.gg/docgfx" class="btn-primary"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="btn-primary"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
       <a href="#sec-websites" class="btn-ghost"><span data-t="viewPortfolio">View Portfolio</span> <i class="fa-solid fa-arrow-down" style="font-size:9px"></i></a>
     </div>
   </div>
@@ -386,7 +413,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secLogosTitle">Brand Identity<br>& Logos</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -409,7 +436,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secBannersTitle">Banners</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €10</span></a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €10</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -454,7 +481,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secProductsTitle">Product<br>Artwork</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -489,7 +516,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secThumbsTitle">YouTube<br>Thumbnails</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -563,13 +590,13 @@ footer a:hover{color:#fff}
 <div class="cta reveal">
   <h2 class="cta-title" data-t="ctaTitle">Ready for your next<br><span style="color:var(--muted)">Project?</span></h2>
   <p class="cta-sub" data-t="ctaSub">Join the Discord and order your custom GFX directly.</p>
-  <a href="https://discord.gg/docgfx" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
+  <a href="https://discord.gg/SNHbWq7hPt" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
 </div>
 
 <footer>
   <span>© 2025 DocGFX</span>
   <span style="color:var(--border-h)">·</span>
-  <a href="https://discord.gg/docgfx"><i class="fa-brands fa-discord"></i> Discord</a>
+  <a href="https://discord.gg/SNHbWq7hPt"><i class="fa-brands fa-discord"></i> Discord</a>
   <span style="color:var(--border-h)">·</span>
   <button class="admin-link" id="adminBtnFooter" style="background:none;border:none;font-size:11px;padding:0;gap:4px"><i class="fa-solid fa-lock" style="font-size:9px"></i> Admin</button>
 </footer>
