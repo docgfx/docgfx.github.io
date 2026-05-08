@@ -107,9 +107,9 @@ h1 em{font-style:normal;color:var(--muted)}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .video-card{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:border-color 0.22s,transform 0.22s}
 .video-card:hover{border-color:var(--border-h);transform:translateY(-3px)}
-.video-card iframe{width:100%;height:100%;border:none;display:block}
-.v-label{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);border:1px solid var(--border);color:#fff;font-size:10px;font-weight:600;letter-spacing:0.05em;padding:4px 10px;border-radius:100px;pointer-events:none}
-.v-price{position:absolute;top:10px;right:10px;background:#fff;color:#000;font-size:10px;font-weight:700;font-family:'Syne',sans-serif;padding:4px 10px;border-radius:100px;pointer-events:none}
+.video-card video{width:100%;height:100%;border:none;display:block;object-fit:cover}
+.v-label{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);border:1px solid var(--border);color:#fff;font-size:10px;font-weight:600;letter-spacing:0.05em;padding:4px 10px;border-radius:100px;pointer-events:none;z-index:2}
+.v-price{position:absolute;top:10px;right:10px;background:#fff;color:#000;font-size:10px;font-weight:700;font-family:'Syne',sans-serif;padding:4px 10px;border-radius:100px;pointer-events:none;z-index:2}
 
 .img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .img-item{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);aspect-ratio:1/1;transition:border-color 0.22s,transform 0.22s;contain:layout paint}
@@ -208,7 +208,9 @@ footer a:hover{color:#fff}
 .music-vol{-webkit-appearance:none;appearance:none;width:72px;height:3px;border-radius:2px;background:var(--border-h);outline:none;cursor:pointer}
 .music-vol::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer}
 .music-vol::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer;border:none}
-.music-track{font-size:10px;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0.04em;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.22s,border-color 0.18s,color 0.18s,transform 0.18s;z-index:400;font-size:12px;-webkit-tap-highlight-color:transparent}
+.music-track{font-size:10px;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0.04em;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+
+.back-to-top{position:fixed;bottom:28px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.22s,border-color 0.18s,color 0.18s,transform 0.18s;z-index:400;font-size:12px;-webkit-tap-highlight-color:transparent}
 .back-to-top.visible{opacity:1;pointer-events:all}
 .back-to-top:hover{border-color:var(--border-h);color:#fff;transform:translateY(-2px)}
 .back-to-top:active{transform:scale(0.93)}
@@ -371,7 +373,8 @@ footer a:hover{color:#fff}
     <h1>Doc<em>GFX</em></h1>
     <p class="hero-sub" data-t="heroSub">Websites · Logos · Banners · Thumbnails · Products</p>
     <div class="hero-actions">
-      <a href="https://discord.gg/SNHbWq7hPt" class="btn-primary"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
+      <!-- Discord-Link aktualisiert -->
+      <a href="https://discord.gg/docgfx" class="btn-primary"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
       <a href="#sec-websites" class="btn-ghost"><span data-t="viewPortfolio">View Portfolio</span> <i class="fa-solid fa-arrow-down" style="font-size:9px"></i></a>
     </div>
   </div>
@@ -398,9 +401,30 @@ footer a:hover{color:#fff}
   <div class="section-body">
     <div style="height:32px"></div>
     <div class="video-grid">
-      <div class="video-card"><span class="v-label">Hyper Theme</span><span class="v-price">€25</span><iframe src="https://player.vimeo.com/video/1185284072?h=6a34a574dc&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
-      <div class="video-card"><span class="v-label">ClassiX Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185651008?h=cad3867de9&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
-      <div class="video-card"><span class="v-label">Syndicate Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185653786?h=695210634f&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
+      <!-- Vimeo-Player ersetzt durch <video> Tag. Bitte URL ersetzen! -->
+      <div class="video-card">
+        <span class="v-label">Hyper Theme</span>
+        <span class="v-price">€25</span>
+        <video src="DEINE_HYPER_VIDEO_URL" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
+      </div>
+      <!-- Vimeo-Player ersetzt durch <video> Tag. Bitte URL ersetzen! -->
+      <div class="video-card">
+        <span class="v-label">ClassiX Theme</span>
+        <span class="v-price">€20</span>
+        <video src="DEINE_CLASSIX_VIDEO_URL" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
+      </div>
+      <!-- Vimeo-Player ersetzt durch <video> Tag. Bitte URL ersetzen! -->
+      <div class="video-card">
+        <span class="v-label">Syndicate Theme</span>
+        <span class="v-price">€20</span>
+        <video src="DEINE_SYNDICATE_VIDEO_URL" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
+      </div>
+      <!-- ResellX Iframe ersetzt durch <video> Tag, um Download zu verhindern -->
+      <div class="video-card">
+        <span class="v-label">ResellX Theme</span>
+        <span class="v-price">€25</span>
+        <video src="https://cdn.discordapp.com/attachments/1403170617972228208/1431031664112435231/ResellX.mp4?ex=69fefe58&is=69fdacd8&hm=7623dcee3c011b32ecb9ecfffb7dd5f94b3b3ce39374d50be61f956df4e0634a&" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
+      </div>
     </div>
   </div>
 </section>
@@ -413,7 +437,8 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secLogosTitle">Brand Identity<br>& Logos</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
+      <!-- Discord-Link aktualisiert -->
+      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -436,7 +461,8 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secBannersTitle">Banners</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €10</span></a>
+      <!-- Discord-Link aktualisiert -->
+      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €10</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -481,7 +507,8 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secProductsTitle">Product<br>Artwork</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
+      <!-- Discord-Link aktualisiert -->
+      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -516,7 +543,8 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secThumbsTitle">YouTube<br>Thumbnails</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
+      <!-- Discord-Link aktualisiert -->
+      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -590,13 +618,15 @@ footer a:hover{color:#fff}
 <div class="cta reveal">
   <h2 class="cta-title" data-t="ctaTitle">Ready for your next<br><span style="color:var(--muted)">Project?</span></h2>
   <p class="cta-sub" data-t="ctaSub">Join the Discord and order your custom GFX directly.</p>
-  <a href="https://discord.gg/SNHbWq7hPt" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
+  <!-- Discord-Link aktualisiert -->
+  <a href="https://discord.gg/docgfx" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
 </div>
 
 <footer>
   <span>© 2025 DocGFX</span>
   <span style="color:var(--border-h)">·</span>
-  <a href="https://discord.gg/SNHbWq7hPt"><i class="fa-brands fa-discord"></i> Discord</a>
+  <!-- Discord-Link aktualisiert -->
+  <a href="https://discord.gg/docgfx"><i class="fa-brands fa-discord"></i> Discord</a>
   <span style="color:var(--border-h)">·</span>
   <button class="admin-link" id="adminBtnFooter" style="background:none;border:none;font-size:11px;padding:0;gap:4px"><i class="fa-solid fa-lock" style="font-size:9px"></i> Admin</button>
 </footer>
