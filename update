@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DocGFX</title>
+<meta name="description" content="Custom websites, logos, banners, thumbnails & product artwork. Starting from €3. Order directly via Discord.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.docgfx.com/">
+<meta property="og:title" content="DocGFX">
+<meta property="og:description" content="Custom websites, logos, banners, thumbnails & product artwork. Starting from €3. Order directly via Discord.">
+<meta property="og:image" content="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/IMG_7228.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="DocGFX">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DocGFX — Premium Graphics Studio">
+<meta name="twitter:description" content="Custom websites, logos, banners, thumbnails & product artwork. Starting from €3.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/IMG_7228.png">
+
+<meta name="theme-color" content="#060606">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -66,6 +83,12 @@ h1 em{font-style:normal;color:var(--muted)}
 
 .section{padding:72px 2rem;max-width:1100px;margin:0 auto}
 .section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px}
+.section-header.accordion-header{cursor:pointer;margin-bottom:0;user-select:none;-webkit-tap-highlight-color:transparent}
+.section-header.accordion-header:hover .section-title{opacity:0.8}
+.accordion-chevron{color:var(--muted);font-size:12px;transition:transform 0.3s ease,color 0.18s;flex-shrink:0;margin-left:8px}
+.accordion-open .accordion-chevron{transform:rotate(180deg);color:#fff}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.accordion-open .accordion-body{max-height:9999px}
 .section-tag{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:block}
 .section-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:#fff}
 .price-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:100px;white-space:nowrap;text-decoration:none;transition:all 0.18s}
@@ -135,6 +158,12 @@ h1 em{font-style:normal;color:var(--muted)}
 #panel-product-cards-panel .product-item,#panel-product-cards-panel .dyn-item{aspect-ratio:16/9}
 #panel-product-cards-panel .product-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 
+.section-toggle{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0;-webkit-tap-highlight-color:transparent;text-align:left}
+.section-toggle-icon{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:10px;flex-shrink:0;transition:border-color 0.2s,color 0.2s,transform 0.28s ease}
+.section-toggle:hover .section-toggle-icon{border-color:var(--border-h);color:#fff}
+.section.open .section-toggle-icon{transform:rotate(180deg);color:#fff;border-color:var(--border-h)}
+.section-body{overflow:hidden;max-height:0;transition:max-height 0.4s ease}
+.section.open .section-body{max-height:9999px}
 .empty-placeholder{padding:44px 20px;text-align:center;color:var(--muted);font-size:13px;border:1px dashed var(--border);border-radius:var(--radius);min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .empty-placeholder i{font-size:20px;opacity:0.35}
 
@@ -168,6 +197,28 @@ footer a:hover{color:#fff}
 
 .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+
+.music-player{position:fixed;bottom:28px;right:76px;z-index:400;display:flex;align-items:center;gap:8px}
+.music-btn{width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.18s,color 0.18s,transform 0.18s;font-size:16px;-webkit-tap-highlight-color:transparent;user-select:none}
+.music-btn:hover{border-color:var(--border-h);color:#fff;transform:translateY(-2px)}
+.music-btn:active{transform:scale(0.93)}
+.music-btn.playing{border-color:rgba(255,255,255,0.2);color:#fff}
+.music-controls{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 12px;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity 0.2s,transform 0.2s}
+.music-controls.visible{opacity:1;pointer-events:all;transform:translateY(0)}
+.music-vol{-webkit-appearance:none;appearance:none;width:72px;height:3px;border-radius:2px;background:var(--border-h);outline:none;cursor:pointer}
+.music-vol::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer}
+.music-vol::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer;border:none}
+.music-track{font-size:10px;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0.04em;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.22s,border-color 0.18s,color 0.18s,transform 0.18s;z-index:400;font-size:12px;-webkit-tap-highlight-color:transparent}
+.back-to-top.visible{opacity:1;pointer-events:all}
+.back-to-top:hover{border-color:var(--border-h);color:#fff;transform:translateY(-2px)}
+.back-to-top:active{transform:scale(0.93)}
+
+.discord-widget{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px 6px 10px;text-decoration:none;transition:border-color 0.18s;cursor:default}
+.discord-widget:hover{border-color:var(--border-h)}
+.discord-online-dot{width:8px;height:8px;border-radius:50%;background:#23a55a;flex-shrink:0;animation:pulse-dot 2.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(35,165,90,0.5)}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(35,165,90,0.5)}50%{box-shadow:0 0 0 5px rgba(35,165,90,0)}}
+.discord-widget-text{font-size:11px;color:var(--muted2);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0.04em}
+.discord-widget-text span{color:#fff}
 
 .global-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:#fff;color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:10px 22px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity 0.22s,transform 0.22s;z-index:500;max-width:88vw;text-align:center;white-space:normal}
 .global-toast.err{background:#ff4444;color:#fff}
@@ -296,6 +347,10 @@ footer a:hover{color:#fff}
 <nav>
   <a href="#" class="nav-logo">Doc<span>GFX</span></a>
   <div class="nav-right">
+    <div class="discord-widget" id="discordWidget">
+      <div class="discord-online-dot"></div>
+      <div class="discord-widget-text"><span id="discordOnlineCount">—</span> online</div>
+    </div>
     <div class="lang-toggle">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="de">DE</button>
@@ -333,117 +388,145 @@ footer a:hover{color:#fff}
 <div id="portfolio"></div>
 
 <section class="section reveal" id="sec-websites">
-  <div class="section-header">
+  <button class="section-toggle" onclick="this.closest('.section').classList.toggle('open')">
     <div>
       <span class="section-tag">01 — <span data-t="secWebsites">Websites</span></span>
       <h2 class="section-title" data-t="secWebsitesTitle">Custom Website<br>Themes</h2>
     </div>
-  </div>
-  <div class="video-grid">
-    <div class="video-card"><span class="v-label">Hyper Theme</span><span class="v-price">€25</span><iframe src="https://player.vimeo.com/video/1185284072?h=6a34a574dc&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
-    <div class="video-card"><span class="v-label">ClassiX Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185651008?h=cad3867de9&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
-    <div class="video-card"><span class="v-label">Syndicate Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185653786?h=695210634f&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
+    <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
+  </button>
+  <div class="section-body">
+    <div style="height:32px"></div>
+    <div class="video-grid">
+      <div class="video-card"><span class="v-label">Hyper Theme</span><span class="v-price">€25</span><iframe src="https://player.vimeo.com/video/1185284072?h=6a34a574dc&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
+      <div class="video-card"><span class="v-label">ClassiX Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185651008?h=cad3867de9&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
+      <div class="video-card"><span class="v-label">Syndicate Theme</span><span class="v-price">€20</span><iframe src="https://player.vimeo.com/video/1185653786?h=695210634f&title=0&byline=0&portrait=0" loading="lazy" allow="fullscreen"></iframe></div>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
 
 <section class="section reveal" id="sec-logos">
-  <div class="section-header">
+  <button class="section-toggle" onclick="this.closest('.section').classList.toggle('open')">
     <div>
       <span class="section-tag">02 — <span data-t="secLogos">Logos</span></span>
       <h2 class="section-title" data-t="secLogosTitle">Brand Identity<br>& Logos</h2>
     </div>
-    <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
-  </div>
-  <div class="img-grid" id="grid-logos">
-    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/ws_logo.png" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
-    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Sellauth-Logo-EngineX.png" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div>
-    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/VS-Xmas_no_bg.png" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div>
-    <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Final_Comp_2.gif" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
+      <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+  </button>
+  <div class="section-body">
+    <div style="height:32px"></div>
+    <div class="img-grid" id="grid-logos">
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/ws_logo.png" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Sellauth-Logo-EngineX.png" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/VS-Xmas_no_bg.png" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Final_Comp_2.gif" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
 
 <section class="section reveal" id="sec-banners">
-  <div class="section-header">
+  <button class="section-toggle" onclick="this.closest('.section').classList.toggle('open')">
     <div>
       <span class="section-tag">03 — <span data-t="secBanners">Banners</span></span>
       <h2 class="section-title" data-t="secBannersTitle">Banners</h2>
     </div>
-    <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €10</span></a>
-  </div>
-  <div class="sub-tabs" id="bannerTabs">
-    <button class="sub-tab active" data-panel="server-banners">Server Banner</button>
-    <button class="sub-tab" data-panel="profile-banners">Profile Banner</button>
-    <button class="sub-tab" data-panel="embed-banners">Embed Banners</button>
-    <button class="sub-tab" data-panel="signatures">Signatures</button>
-  </div>
-  <div class="sub-panel active" id="panel-server-banners">
-    <div class="sub-section-label" data-t="subServerBanners">Server Banners — <span style="color:var(--muted2)">€15</span></div>
-    <div class="img-grid" id="grid-server-banners">
-      <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Server_Banner_2.gif" loading="lazy" alt="Engine X"><div class="img-overlay"><span class="overlay-label">Engine X</span></div></div>
-      <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/banner.png" loading="lazy" alt="Noilcheats"><div class="img-overlay"><span class="overlay-label">Noilcheats</span></div></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €10</span></a>
+      <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
-  </div>
-  <div class="sub-panel" id="panel-profile-banners">
-    <div class="sub-section-label" data-t="subProfileBanners">Profile Banners</div>
-    <div class="img-grid" id="grid-profile-banners"></div>
-    <div class="empty-placeholder" id="placeholder-profile-banners"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
-  </div>
-  <div class="sub-panel" id="panel-embed-banners">
-    <div class="sub-section-label" data-t="subEmbedBanners">Embed Banners</div>
-    <div class="img-grid" id="grid-embed-banners"></div>
-    <div class="empty-placeholder" id="placeholder-embed-banners"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
-  </div>
-  <div class="sub-panel" id="panel-signatures">
-    <div class="sub-section-label" data-t="subSignatures">Signatures</div>
-    <div class="img-grid" id="grid-signatures"></div>
-    <div class="empty-placeholder" id="placeholder-signatures"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
+  </button>
+  <div class="section-body">
+    <div style="height:32px"></div>
+    <div class="sub-tabs" id="bannerTabs">
+      <button class="sub-tab active" data-panel="server-banners">Server Banner</button>
+      <button class="sub-tab" data-panel="profile-banners">Profile Banner</button>
+      <button class="sub-tab" data-panel="embed-banners">Embed Banners</button>
+      <button class="sub-tab" data-panel="signatures">Signatures</button>
+    </div>
+    <div class="sub-panel active" id="panel-server-banners">
+      <div class="sub-section-label" data-t="subServerBanners">Server Banners — <span style="color:var(--muted2)">€15</span></div>
+      <div class="img-grid" id="grid-server-banners">
+        <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Server_Banner_2.gif" loading="lazy" alt="Engine X"><div class="img-overlay"><span class="overlay-label">Engine X</span></div></div>
+        <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/banner.png" loading="lazy" alt="Noilcheats"><div class="img-overlay"><span class="overlay-label">Noilcheats</span></div></div>
+      </div>
+    </div>
+    <div class="sub-panel" id="panel-profile-banners">
+      <div class="sub-section-label" data-t="subProfileBanners">Profile Banners</div>
+      <div class="img-grid" id="grid-profile-banners"></div>
+      <div class="empty-placeholder" id="placeholder-profile-banners"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
+    </div>
+    <div class="sub-panel" id="panel-embed-banners">
+      <div class="sub-section-label" data-t="subEmbedBanners">Embed Banners</div>
+      <div class="img-grid" id="grid-embed-banners"></div>
+      <div class="empty-placeholder" id="placeholder-embed-banners"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
+    </div>
+    <div class="sub-panel" id="panel-signatures">
+      <div class="sub-section-label" data-t="subSignatures">Signatures</div>
+      <div class="img-grid" id="grid-signatures"></div>
+      <div class="empty-placeholder" id="placeholder-signatures"><i class="fa-regular fa-image"></i>Coming soon — check Discord for updates</div>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
 
 <section class="section reveal" id="sec-products">
-  <div class="section-header">
+  <button class="section-toggle" onclick="this.closest('.section').classList.toggle('open')">
     <div>
       <span class="section-tag">04 — <span data-t="secProducts">Products</span></span>
       <h2 class="section-title" data-t="secProductsTitle">Product<br>Artwork</h2>
     </div>
-    <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
-  </div>
-  <div class="sub-tabs" id="productTabs">
-    <button class="sub-tab active" data-panel="product-boxes-panel">Product Boxes</button>
-    <button class="sub-tab" data-panel="product-cards-panel">Product Cards</button>
-  </div>
-  <div class="sub-panel active" id="panel-product-boxes-panel">
-    <div class="sub-section-label" data-t="subProductBoxes">Product Boxes — <span style="color:var(--muted2)">€3</span></div>
-    <div class="product-grid" id="grid-boxes">
-      <div class="product-item"><img src="https://i.imgur.com/PCVWDDu.png" loading="lazy" alt="Omega"><div class="product-type-badge">Box</div></div>
-      <div class="product-item"><img src="https://i.imgur.com/m8Q7utv.png" loading="lazy" alt="Box New"><div class="product-type-badge">Box</div></div>
-      <div class="product-item"><img src="https://i.imgur.com/rk3aPke.png" loading="lazy" alt="UA"><div class="product-type-badge">Box</div></div>
-      <div class="product-item"><img src="https://i.imgur.com/1Fg35JR.png" loading="lazy" alt="Rust Int"><div class="product-type-badge">Box</div></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
+      <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
-  </div>
-  <div class="sub-panel" id="panel-product-cards-panel">
-    <div class="sub-section-label" data-t="subProductCards">Product Cards</div>
-    <div class="product-grid" id="grid-cards"></div>
-    <div class="empty-placeholder" id="placeholder-cards"><i class="fa-regular fa-rectangle-list"></i>Coming soon — check Discord for updates</div>
+  </button>
+  <div class="section-body">
+    <div style="height:32px"></div>
+    <div class="sub-tabs" id="productTabs">
+      <button class="sub-tab active" data-panel="product-boxes-panel">Product Boxes</button>
+      <button class="sub-tab" data-panel="product-cards-panel">Product Cards</button>
+    </div>
+    <div class="sub-panel active" id="panel-product-boxes-panel">
+      <div class="sub-section-label" data-t="subProductBoxes">Product Boxes — <span style="color:var(--muted2)">€3</span></div>
+      <div class="product-grid" id="grid-boxes">
+        <div class="product-item"><img src="https://i.imgur.com/PCVWDDu.png" loading="lazy" alt="Omega"><div class="product-type-badge">Box</div></div>
+        <div class="product-item"><img src="https://i.imgur.com/m8Q7utv.png" loading="lazy" alt="Box New"><div class="product-type-badge">Box</div></div>
+        <div class="product-item"><img src="https://i.imgur.com/rk3aPke.png" loading="lazy" alt="UA"><div class="product-type-badge">Box</div></div>
+        <div class="product-item"><img src="https://i.imgur.com/1Fg35JR.png" loading="lazy" alt="Rust Int"><div class="product-type-badge">Box</div></div>
+      </div>
+    </div>
+    <div class="sub-panel" id="panel-product-cards-panel">
+      <div class="sub-section-label" data-t="subProductCards">Product Cards</div>
+      <div class="product-grid" id="grid-cards"></div>
+      <div class="empty-placeholder" id="placeholder-cards"><i class="fa-regular fa-rectangle-list"></i>Coming soon — check Discord for updates</div>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
 
 <section class="section reveal" id="sec-thumbnails">
-  <div class="section-header">
+  <button class="section-toggle" onclick="this.closest('.section').classList.toggle('open')">
     <div>
       <span class="section-tag">05 — <span data-t="secThumbs">Thumbnails</span></span>
       <h2 class="section-title" data-t="secThumbsTitle">YouTube<br>Thumbnails</h2>
     </div>
-    <a href="https://discord.gg/SNHbWq7hPt" class="price-tag"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
-  </div>
-  <div class="img-grid" id="grid-thumbnails">
-    <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thmb1.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
-    <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thumb2.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
-    <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thumb3.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
+      <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+  </button>
+  <div class="section-body">
+    <div style="height:32px"></div>
+    <div class="img-grid" id="grid-thumbnails">
+      <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thmb1.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+      <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thumb2.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+      <div class="img-item wide"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/thumb3.png" loading="lazy" alt="Thumbnail"><div class="img-overlay"><span class="overlay-label">Thumbnail</span></div></div>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
@@ -519,6 +602,7 @@ footer a:hover{color:#fff}
 </footer>
 
 <div class="global-toast" id="globalToast"></div>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-chevron-up"></i></button>
 
 <div class="login-overlay" id="loginOverlay">
   <div class="login-panel">
@@ -901,6 +985,24 @@ function showAdminStatus(msg,type){
 
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const btt=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
+
+const DISCORD_SERVER_ID='1496198144306974720';
+
+async function fetchDiscordOnline(){
+  try{
+    const res=await fetch(`https://discord.com/api/guilds/${DISCORD_SERVER_ID}/widget.json`);
+    if(!res.ok)return;
+    const data=await res.json();
+    if(data.presence_count!==undefined){
+      document.getElementById('discordOnlineCount').textContent=data.presence_count;
+    }
+  }catch{}
+}
+fetchDiscordOnline();
+setInterval(fetchDiscordOnline,60000);
 
 handleAuthCallback();
 tryAutoLogin();
