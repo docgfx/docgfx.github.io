@@ -40,6 +40,29 @@
   --radius:14px;
 }
 html{scroll-behavior:smooth}
+
+*{cursor:none!important}
+#custom-cursor{
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:#fff;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.08s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  mix-blend-mode:difference;
+  will-change:left,top;
+}
+#custom-cursor.hover{
+  width:22px;
+  height:22px;
+}
+#custom-cursor.click{
+  transform:translate(-50%,-50%) scale(0.7);
+}
+
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(6,6,6,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -74,6 +97,23 @@ h1 em{font-style:normal;color:var(--muted)}
 .scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,transparent,var(--muted));animation:sline 2.2s ease-in-out infinite}
 @keyframes sline{0%,100%{opacity:0}50%{opacity:1}}
 
+.contact-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(12px);padding:1rem}
+.contact-modal-overlay.open{display:flex}
+.contact-modal{background:#0f0f0f;border:1px solid var(--border-h);border-radius:22px;padding:36px;width:100%;max-width:420px;position:relative;animation:fadeUp 0.3s ease both}
+.contact-modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;transition:color 0.18s;padding:6px}
+.contact-modal-close:hover{color:#fff}
+.contact-modal h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px;color:#fff}
+.contact-modal-sub{color:var(--muted);font-size:13px;margin-bottom:28px;line-height:1.5}
+.contact-links{display:flex;flex-direction:column;gap:10px}
+.contact-link-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:14px;border:1px solid var(--border);background:var(--surface);text-decoration:none;color:#fff;transition:border-color 0.2s,background 0.2s,transform 0.18s}
+.contact-link-item:hover{border-color:var(--border-h);background:var(--surface2);transform:translateX(4px)}
+.contact-link-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.contact-link-icon.discord{background:#5865F2;color:#fff}
+.contact-link-icon.generic{background:var(--surface2);color:var(--muted2);border:1px solid var(--border)}
+.contact-link-text{display:flex;flex-direction:column;gap:2px}
+.contact-link-label{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:-0.01em}
+.contact-link-value{font-size:11px;color:var(--muted2);letter-spacing:0.02em}
+
 .stats-bar{display:flex;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 1rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .stats-bar::-webkit-scrollbar{display:none}
 .stat{flex:1;min-width:72px;text-align:center;padding:0 1rem;border-right:1px solid var(--border)}
@@ -107,9 +147,36 @@ h1 em{font-style:normal;color:var(--muted)}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .video-card{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:border-color 0.22s,transform 0.22s}
 .video-card:hover{border-color:var(--border-h);transform:translateY(-3px)}
-.video-card video{width:100%;height:100%;border:none;display:block;object-fit:cover}
+.video-card video{
+  width:100%;
+  height:100%;
+  border:none;
+  display:block;
+  object-fit:cover;
+  /* critical: no crossorigin restriction issues */
+}
+/* Fallback when video can't load */
+.video-card .video-fallback{
+  display:none;
+  width:100%;
+  height:100%;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:8px;
+  color:var(--muted);
+  font-size:12px;
+  text-align:center;
+  padding:1rem;
+}
+.video-card video.errored ~ .video-fallback{display:flex}
 .v-label{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);border:1px solid var(--border);color:#fff;font-size:10px;font-weight:600;letter-spacing:0.05em;padding:4px 10px;border-radius:100px;pointer-events:none;z-index:2}
 .v-price{position:absolute;top:10px;right:10px;background:#fff;color:#000;font-size:10px;font-weight:700;font-family:'Syne',sans-serif;padding:4px 10px;border-radius:100px;pointer-events:none;z-index:2}
+/* Play overlay */
+.v-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;opacity:0;transition:opacity 0.2s;pointer-events:none}
+.video-card:hover .v-play-overlay{opacity:1}
+.v-play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;pointer-events:all;cursor:pointer;transition:background 0.18s}
+.v-play-btn:hover{background:rgba(255,255,255,0.25)}
 
 .img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .img-item{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);aspect-ratio:1/1;transition:border-color 0.22s,transform 0.22s;contain:layout paint}
@@ -186,6 +253,17 @@ h1 em{font-style:normal;color:var(--muted)}
 .faq-answer-inner{padding:0 24px 20px;color:var(--muted2);font-size:13px;line-height:1.7;border-top:1px solid var(--border)}
 .faq-item.open .faq-answer{max-height:300px}
 .faq-divider{height:1px;background:var(--border)}
+
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.review-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;transition:border-color 0.2s}
+.review-card:hover{border-color:var(--border-h)}
+.review-stars{color:#FFD700;font-size:12px;display:flex;gap:3px}
+.review-text{font-size:13px;color:var(--muted2);line-height:1.6;flex:1}
+.review-author{display:flex;align-items:center;gap:10px}
+.review-avatar{width:32px;height:32px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted2);flex-shrink:0;letter-spacing:-0.02em}
+.review-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fff}
+.review-type{font-size:10px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
 
 .cta{margin:0 2rem 80px;max-width:1100px;margin-left:auto;margin-right:auto;padding:64px 40px;text-align:center;border-radius:20px;border:1px solid var(--border);background:var(--surface);position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:400px;height:250px;background:radial-gradient(ellipse,rgba(255,255,255,0.04) 0%,transparent 70%);pointer-events:none}
@@ -266,6 +344,8 @@ footer a:hover{color:#fff}
 .color-picker-wrapper .color-hex{color:var(--muted2);font-size:12px;font-family:monospace;letter-spacing:0.04em}
 
 @media(max-width:768px){
+  *{cursor:auto!important}
+  #custom-cursor{display:none}
   nav{padding:11px 16px}
   .nav-logo{font-size:15px}
   .lang-btn{padding:3px 9px;font-size:10px}
@@ -313,6 +393,7 @@ footer a:hover{color:#fff}
   .btn-sm{padding:9px 13px;font-size:10px}
   .login-panel{padding:24px 16px}
   .global-toast{bottom:16px;font-size:11px;padding:9px 18px}
+  .contact-modal{padding:24px 16px}
 }
 
 @media(max-width:420px){
@@ -338,6 +419,7 @@ footer a:hover{color:#fff}
   .dyn-item:active .dyn-meta{opacity:1}
   .dyn-delete{opacity:1}
   .video-card:hover{transform:none}
+  .v-play-overlay{display:none}
   .product-item:hover{transform:none;box-shadow:none}
   .product-item:hover img{filter:grayscale(60%);transform:none}
   .product-item:active img{filter:grayscale(0%)}
@@ -345,6 +427,8 @@ footer a:hover{color:#fff}
 </style>
 </head>
 <body>
+
+<div id="custom-cursor"></div>
 
 <nav>
   <a href="#" class="nav-logo">Doc<span>GFX</span></a>
@@ -373,18 +457,65 @@ footer a:hover{color:#fff}
     <h1>Doc<em>GFX</em></h1>
     <p class="hero-sub" data-t="heroSub">Websites · Logos · Banners · Thumbnails · Products</p>
     <div class="hero-actions">
-      <!-- Discord-Link aktualisiert -->
-      <a href="https://discord.gg/docgfx" class="btn-primary"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
-      <a href="#sec-websites" class="btn-ghost"><span data-t="viewPortfolio">View Portfolio</span> <i class="fa-solid fa-arrow-down" style="font-size:9px"></i></a>
+      
+      <a href="#sec-websites" class="btn-primary" onclick="document.querySelector('#sec-websites').scrollIntoView({behavior:'smooth'});return false;">
+        <i class="fa-solid fa-arrow-down" style="font-size:10px"></i>
+        <span data-t="seeMyWork">See My Work</span>
+      </a>
+      
+      <button class="btn-ghost" id="getInTouchBtn">
+        <i class="fa-regular fa-paper-plane" style="font-size:10px"></i>
+        <span data-t="getInTouch">Get in Touch</span>
+      </button>
     </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
 </section>
 
+<div class="contact-modal-overlay" id="contactModal">
+  <div class="contact-modal">
+    <button class="contact-modal-close" id="contactModalClose"><i class="fa-solid fa-xmark"></i></button>
+    <h3 data-t="contactTitle">Get in Touch</h3>
+    <p class="contact-modal-sub" data-t="contactSub">Reach out via Discord to order custom GFX or ask questions. Fast replies guaranteed.</p>
+    <div class="contact-links">
+      <a href="https://discord.gg/docgfx" class="contact-link-item" target="_blank" rel="noopener">
+        <div class="contact-link-icon discord"><i class="fa-brands fa-discord"></i></div>
+        <div class="contact-link-text">
+          <span class="contact-link-label">Discord Server</span>
+          <span class="contact-link-value">discord.gg/docgfx</span>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;color:var(--muted);margin-left:auto"></i>
+      </a>
+      <a href="https://discord.com/users/1294570988788518975" class="contact-link-item" target="_blank" rel="noopener">
+        <div class="contact-link-icon generic"><i class="fa-brands fa-discord"></i></div>
+        <div class="contact-link-text">
+          <span class="contact-link-label" data-t="contactDmLabel">Direct Message</span>
+          <span class="contact-link-value" id="contactDiscordTag">@oe1h</span>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;color:var(--muted);margin-left:auto"></i>
+      </a>
+      <div class="contact-link-item" style="cursor:default">
+        <div class="contact-link-icon generic"><i class="fa-solid fa-clock"></i></div>
+        <div class="contact-link-text">
+          <span class="contact-link-label" data-t="contactResponseLabel">Response Time</span>
+          <span class="contact-link-value" data-t="contactResponseValue">Usually within a few hours</span>
+        </div>
+      </div>
+      <div class="contact-link-item" style="cursor:default">
+        <div class="contact-link-icon generic"><i class="fa-solid fa-earth-europe"></i></div>
+        <div class="contact-link-text">
+          <span class="contact-link-label" data-t="contactLocationLabel">Based in</span>
+          <span class="contact-link-value" data-t="contactLocationValue">Austria / Europe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="stats-bar">
   <div class="stat"><span class="stat-num" id="statTotal">50+</span><span class="stat-label" data-t="statProjects">Projects</span></div>
   <div class="stat"><span class="stat-num">€3</span><span class="stat-label" data-t="statFrom">Starting From</span></div>
-  <div class="stat"><span class="stat-num">3</span><span class="stat-label" data-t="statThemes">Themes</span></div>
+  <div class="stat"><span class="stat-num">5</span><span class="stat-label" data-t="statThemes">Themes</span></div>
   <div class="stat"><span class="stat-num">5★</span><span class="stat-label" data-t="statRating">Rating</span></div>
 </div>
 
@@ -400,31 +531,8 @@ footer a:hover{color:#fff}
   </button>
   <div class="section-body">
     <div style="height:32px"></div>
-    <div class="video-grid">
-      <!-- Vimeo-Player ersetzt durch <video> Tag. Bitte URL ersetzen! -->
-      <div class="video-card">
-        <span class="v-label">Hyper Theme</span>
-        <span class="v-price">€25</span>
-        <video src="https://cdn.discordapp.com/attachments/1403170617972228208/1496171388694691920/Hyper_Theme.mp4?ex=69ff5330&is=69fe01b0&hm=9555eb8b0603010fc8c8a9fd10fdd87968cd8f86cf114fa4bc18c6d4b540b0e7&" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
-      </div>
-      <!-- Vimeo-Player ersetzt durch <video> Tag. Bitte URL ersetzen! -->
-      <div class="video-card">
-        <span class="v-label">ClassiX Theme</span>
-        <span class="v-price">€20</span>
-        <video src="https://cdn.discordapp.com/attachments/1403170617972228208/1439457749636223118/ClassiX_Theme_II_Engine_X.mp4?ex=69ff533f&is=69fe01bf&hm=3227cadaf1393f304bb63f250ddb00b6ec3587fe362b313e3a341108fea5e3f1&" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
-      </div>
-      <!-- Vimeo-Player ersetzt durch <video> Tag. Bitte URL ersetzen! -->
-      <div class="video-card">
-        <span class="v-label">Syndicate Theme</span>
-        <span class="v-price">€20</span>
-        <video src="https://cdn.discordapp.com/attachments/1403170617972228208/1434973542109155489/Syndicate_Project.mp4?ex=69fed500&is=69fd8380&hm=bced2a4591a49dda2ff0a0d4dff52b03f24c616aa9c46f2c57a36267e34d9d5f&" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
-      </div>
-      <!-- ResellX Iframe ersetzt durch <video> Tag, um Download zu verhindern -->
-      <div class="video-card">
-        <span class="v-label">ResellX Theme</span>
-        <span class="v-price">€25</span>
-        <video src="https://cdn.discordapp.com/attachments/1403170617972228208/1431031664112435231/ResellX.mp4?ex=69fefe58&is=69fdacd8&hm=7623dcee3c011b32ecb9ecfffb7dd5f94b3b3ce39374d50be61f956df4e0634a&" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;"></video>
-      </div>
+    <div class="video-grid" id="videoGrid">
+      
     </div>
   </div>
 </section>
@@ -437,7 +545,6 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secLogosTitle">Brand Identity<br>& Logos</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <!-- Discord-Link aktualisiert -->
       <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €10</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
@@ -461,7 +568,6 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secBannersTitle">Banners</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <!-- Discord-Link aktualisiert -->
       <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €10</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
@@ -507,7 +613,6 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secProductsTitle">Product<br>Artwork</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <!-- Discord-Link aktualisiert -->
       <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
@@ -543,7 +648,6 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secThumbsTitle">YouTube<br>Thumbnails</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <!-- Discord-Link aktualisiert -->
       <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
@@ -595,6 +699,31 @@ footer a:hover{color:#fff}
 </section>
 <div class="divider"></div>
 
+<section class="section reveal" id="sec-reviews">
+  <div class="section-header">
+    <div>
+      <span class="section-tag" data-t="secReviewsTag">Reviews</span>
+      <h2 class="section-title" data-t="secReviewsTitle">What clients<br>are saying</h2>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <div class="review-text">"Best product boxes I've ever seen"</div>
+      <div class="review-author">
+        <div class="review-avatar">31%</div>
+        <div>
+          <div class="review-name">31% Raz</div>
+          <div class="review-type">Product Box</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
 <section class="section reveal" id="sec-faq">
   <div class="section-header">
     <div>
@@ -618,14 +747,12 @@ footer a:hover{color:#fff}
 <div class="cta reveal">
   <h2 class="cta-title" data-t="ctaTitle">Ready for your next<br><span style="color:var(--muted)">Project?</span></h2>
   <p class="cta-sub" data-t="ctaSub">Join the Discord and order your custom GFX directly.</p>
-  <!-- Discord-Link aktualisiert -->
   <a href="https://discord.gg/docgfx" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
 </div>
 
 <footer>
   <span>© 2025 DocGFX</span>
   <span style="color:var(--border-h)">·</span>
-  <!-- Discord-Link aktualisiert -->
   <a href="https://discord.gg/docgfx"><i class="fa-brands fa-discord"></i> Discord</a>
   <span style="color:var(--border-h)">·</span>
   <button class="admin-link" id="adminBtnFooter" style="background:none;border:none;font-size:11px;padding:0;gap:4px"><i class="fa-solid fa-lock" style="font-size:9px"></i> Admin</button>
@@ -633,6 +760,20 @@ footer a:hover{color:#fff}
 
 <div class="global-toast" id="globalToast"></div>
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-chevron-up"></i></button>
+
+<div class="music-player" id="musicPlayer">
+  <button class="music-btn" id="musicToggle" aria-label="Toggle Music Player">
+    <i class="fa-solid fa-music"></i>
+  </button>
+  <div class="music-controls" id="musicControls">
+    <button class="music-btn" id="musicPlay" style="width:34px;height:34px;font-size:13px;">
+      <i class="fa-solid fa-play"></i>
+    </button>
+    <input type="range" class="music-vol" id="musicVolume" min="0" max="100" value="80" aria-label="Volume">
+    <span class="music-track" id="musicTrack">Loading...</span>
+  </div>
+</div>
+<div id="youtube-player" style="display:none;"></div>
 
 <div class="login-overlay" id="loginOverlay">
   <div class="login-panel">
@@ -685,7 +826,31 @@ footer a:hover{color:#fff}
   </div>
 </div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
+
+(function(){
+  const cursor = document.getElementById('custom-cursor');
+  if (!cursor) return;
+  let mx = -100, my = -100;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  document.addEventListener('mousedown', () => cursor.classList.add('click'));
+  document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+  document.querySelectorAll('a, button, [role="button"], .video-card, .img-item, .product-item, .dyn-item, .faq-item, .sub-tab, .lang-btn, input, select').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+})();
+
+const contactModal = document.getElementById('contactModal');
+document.getElementById('getInTouchBtn').addEventListener('click', () => contactModal.classList.add('open'));
+document.getElementById('contactModalClose').addEventListener('click', () => contactModal.classList.remove('open'));
+contactModal.addEventListener('click', e => { if (e.target === contactModal) contactModal.classList.remove('open'); });
+
 const DISCORD_CLIENT_ID='1497683597077778493';
 const ALLOWED_USER_ID='1294570988788518975';
 const REDIRECT_URI=window.location.origin+window.location.pathname;
@@ -694,7 +859,11 @@ let isLoggedIn=false;
 const T={
   en:{
     badge:"Premium Graphics Studio",heroSub:"Websites · Logos · Banners · Thumbnails · Products",
+    seeMyWork:"See My Work",getInTouch:"Get in Touch",
     joinDiscord:"Join Discord",viewPortfolio:"View Portfolio",adminLink:"Admin",
+    contactTitle:"Get in Touch",contactSub:"Reach out via Discord to order custom GFX or ask questions. Fast replies guaranteed.",
+    contactDmLabel:"Direct Message",contactResponseLabel:"Response Time",contactResponseValue:"Usually within a few hours",
+    contactLocationLabel:"Based in",contactLocationValue:"Austria / Europe",
     statProjects:"Projects",statFrom:"Starting From",statThemes:"Themes",statRating:"Rating",
     secWebsites:"Websites",secWebsitesTitle:"Custom Website<br>Themes",
     secLogos:"Logos",secLogosTitle:"Brand Identity<br>& Logos",
@@ -706,6 +875,7 @@ const T={
     step2Title:"Share your idea",step2Desc:"Describe what you need — colors, style, references. The more detail, the better the result.",
     step3Title:"Pay & confirm",step3Desc:"Agree on the price and pay via PayPal or crypto. Work starts right after confirmation.",
     step4Title:"Receive your GFX",step4Desc:"Get your finished file delivered directly in Discord, usually within 24–48 hours.",
+    secReviewsTag:"Reviews",secReviewsTitle:"What clients<br>are saying",
     secFaqTag:"FAQ",secFaqTitle:"Frequently asked<br>questions",
     faq1q:"How long does an order take?",faq1a:"Most orders are delivered within 24–48 hours. Complex projects like animated banners may take a bit longer. Website themes will get delivered instantly. You'll always get an estimated delivery time when placing your order.",
     faq2q:"What payment methods are accepted?",faq2a:"PayPal (Friends & Family) and crypto are accepted. Payment is required upfront before work begins.",
@@ -715,7 +885,11 @@ const T={
   },
   de:{
     badge:"Premium Graphics Studio",heroSub:"Websites · Logos · Banner · Thumbnails · Produkte",
+    seeMyWork:"Meine Arbeit",getInTouch:"Kontakt",
     joinDiscord:"Discord beitreten",viewPortfolio:"Portfolio ansehen",adminLink:"Admin",
+    contactTitle:"Kontakt",contactSub:"Schreib mir auf Discord um GFX zu bestellen oder Fragen zu stellen. Schnelle Antwort garantiert.",
+    contactDmLabel:"Direktnachricht",contactResponseLabel:"Antwortzeit",contactResponseValue:"Meist innerhalb weniger Stunden",
+    contactLocationLabel:"Standort",contactLocationValue:"Österreich / Europa",
     statProjects:"Projekte",statFrom:"Ab Preis",statThemes:"Themes",statRating:"Bewertung",
     secWebsites:"Websites",secWebsitesTitle:"Individuelle<br>Website Themes",
     secLogos:"Logos",secLogosTitle:"Markenidentität<br>& Logos",
@@ -727,6 +901,7 @@ const T={
     step2Title:"Idee teilen",step2Desc:"Beschreibe was du brauchst — Farben, Stil, Referenzen. Je mehr Details, desto besser das Ergebnis.",
     step3Title:"Bezahlen & bestätigen",step3Desc:"Preis absprechen und per PayPal oder Krypto zahlen. Die Arbeit beginnt direkt danach.",
     step4Title:"GFX erhalten",step4Desc:"Deine fertige Datei wird direkt in Discord geliefert, meist innerhalb von 24–48 Stunden.",
+    secReviewsTag:"Bewertungen",secReviewsTitle:"Was Kunden<br>sagen",
     secFaqTag:"FAQ",secFaqTitle:"Häufig gestellte<br>Fragen",
     faq1q:"Wie lange dauert eine Bestellung?",faq1a:"Die meisten Bestellungen werden innerhalb von 24–48 Stunden geliefert. Komplexere Projekte wie animierte Banner können etwas länger dauern. Website Themes werden sofort geliefert.",
     faq2q:"Welche Zahlungsmethoden werden akzeptiert?",faq2a:"PayPal (Freunde & Familie) und Krypto werden akzeptiert. Die Zahlung erfolgt im Voraus, bevor die Arbeit beginnt.",
@@ -743,6 +918,79 @@ function applyLang(l){
   document.documentElement.lang=l;
 }
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+
+const VIDEOS = [
+  { label: 'Hyper Theme',       price: '€25', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1496171388694691920/Hyper_Theme.mp4?ex=69ff5330&is=69fe01b0&hm=9555eb8b0603010fc8c8a9fd10fdd87968cd8f86cf114fa4bc18c6d4b540b0e7&' },
+  { label: 'ClassiX Theme',     price: '€20', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1439457749636223118/ClassiX_Theme_II_Engine_X.mp4?ex=69ff533f&is=69fe01bf&hm=3227cadaf1393f304bb63f250ddb00b6ec3587fe362b313e3a341108fea5e3f1&' },
+  { label: 'Syndicate Theme',   price: '€20', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1434973542109155489/Syndicate_Project.mp4?ex=69fed500&is=69fd8380&hm=bced2a4591a49dda2ff0a0d4dff52b03f24c616aa9c46f2c57a36267e34d9d5f&' },
+  { label: 'ResellX Theme',     price: '€25', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1431031664112435231/ResellX.mp4?ex=69fefe58&is=69fdacd8&hm=7623dcee3c011b32ecb9ecfffb7dd5f94b3b3ce39374d50be61f956df4e0634a&' },
+  { label: 'Modern Pro X Theme',price: '€25', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1403205430569865236/Modern_Pro_X_Theme.mp4?ex=69ff46a4&is=69fdf524&hm=6124ccaa85aa9213930a47888cbc821183632728442b20b6693db48e5d84835e&' },
+];
+
+function buildVideoGrid() {
+  const grid = document.getElementById('videoGrid');
+  VIDEOS.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `
+      <span class="v-label">${v.label}</span>
+      <span class="v-price">${v.price}</span>
+      <video
+        src="${v.src}"
+        preload="metadata"
+        muted
+        playsinline
+        loop
+        controlsList="nodownload nofullscreen"
+        disablePictureInPicture
+        oncontextmenu="return false;"
+      ></video>
+      <div class="v-play-overlay">
+        <div class="v-play-btn"><i class="fa-solid fa-play"></i></div>
+      </div>
+    `;
+
+    const video = card.querySelector('video');
+    const playBtn = card.querySelector('.v-play-btn');
+    const icon = playBtn.querySelector('i');
+
+    // Toggle play/pause on click of overlay btn
+    playBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (video.paused) {
+        video.play().catch(() => {});
+        icon.className = 'fa-solid fa-pause';
+      } else {
+        video.pause();
+        icon.className = 'fa-solid fa-play';
+      }
+    });
+
+    // Auto-play on hover, pause on leave
+    card.addEventListener('mouseenter', () => {
+      video.play().then(() => {
+        icon.className = 'fa-solid fa-pause';
+      }).catch(() => {});
+    });
+    card.addEventListener('mouseleave', () => {
+      video.pause();
+      icon.className = 'fa-solid fa-play';
+    });
+
+    // Handle load error gracefully
+    video.addEventListener('error', () => {
+      video.style.display = 'none';
+      const fb = document.createElement('div');
+      fb.className = 'video-fallback';
+      fb.style.display = 'flex';
+      fb.innerHTML = `<i class="fa-solid fa-video-slash" style="font-size:22px;opacity:0.3"></i><span>Preview not available — see Discord</span>`;
+      card.appendChild(fb);
+    });
+
+    grid.appendChild(card);
+  });
+}
+buildVideoGrid();
 
 document.getElementById('faqList').addEventListener('click',function(e){
   const btn=e.target.closest('.faq-question');
@@ -1020,7 +1268,6 @@ const btt=document.getElementById('backToTop');
 window.addEventListener('scroll',()=>{btt.classList.toggle('visible',window.scrollY>400);},{passive:true});
 
 const DISCORD_SERVER_ID='1496198144306974720';
-
 async function fetchDiscordOnline(){
   try{
     const res=await fetch(`https://discord.com/api/guilds/${DISCORD_SERVER_ID}/widget.json`);
@@ -1038,6 +1285,48 @@ handleAuthCallback();
 tryAutoLogin();
 loadDynamicGFX();
 applyLang('en');
+
+let ytPlayer;
+let playerReady = false;
+let isPlaying = false;
+const musicToggle = document.getElementById('musicToggle');
+const musicControls = document.getElementById('musicControls');
+const musicPlayBtn = document.getElementById('musicPlay');
+const volumeSlider = document.getElementById('musicVolume');
+const trackLabel = document.getElementById('musicTrack');
+
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('youtube-player', {
+    height: '0',
+    width: '0',
+    videoId: 'JQbjS0_ZfJ0',
+    playerVars: {autoplay:0,controls:0,disablekb:1,fs:0,modestbranding:1,origin:window.location.origin},
+    events: {onReady:onPlayerReady,onStateChange:onPlayerStateChange}
+  });
+}
+function onPlayerReady(event) {
+  playerReady = true;
+  event.target.setVolume(volumeSlider.value);
+  const videoData = event.target.getVideoData();
+  trackLabel.textContent = (videoData && videoData.title) ? videoData.title : 'Background Music';
+}
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    isPlaying = true;
+    musicPlayBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    musicToggle.classList.add('playing');
+  } else {
+    isPlaying = false;
+    musicPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    musicToggle.classList.remove('playing');
+  }
+}
+musicToggle.addEventListener('click', () => musicControls.classList.toggle('visible'));
+musicPlayBtn.addEventListener('click', () => {
+  if (!ytPlayer || !playerReady) { showToast('Music is loading...', ''); return; }
+  if (isPlaying) ytPlayer.pauseVideo(); else ytPlayer.playVideo();
+});
+volumeSlider.addEventListener('input', e => { if (ytPlayer && playerReady) ytPlayer.setVolume(e.target.value); });
 </script>
 </body>
 </html>
