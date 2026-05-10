@@ -147,36 +147,9 @@ h1 em{font-style:normal;color:var(--muted)}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .video-card{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:border-color 0.22s,transform 0.22s}
 .video-card:hover{border-color:var(--border-h);transform:translateY(-3px)}
-.video-card video{
-  width:100%;
-  height:100%;
-  border:none;
-  display:block;
-  object-fit:cover;
-  /* critical: no crossorigin restriction issues */
-}
-/* Fallback when video can't load */
-.video-card .video-fallback{
-  display:none;
-  width:100%;
-  height:100%;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:8px;
-  color:var(--muted);
-  font-size:12px;
-  text-align:center;
-  padding:1rem;
-}
-.video-card video.errored ~ .video-fallback{display:flex}
+.video-card iframe{width:100%;height:100%;border:none;display:block}
 .v-label{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);border:1px solid var(--border);color:#fff;font-size:10px;font-weight:600;letter-spacing:0.05em;padding:4px 10px;border-radius:100px;pointer-events:none;z-index:2}
 .v-price{position:absolute;top:10px;right:10px;background:#fff;color:#000;font-size:10px;font-weight:700;font-family:'Syne',sans-serif;padding:4px 10px;border-radius:100px;pointer-events:none;z-index:2}
-/* Play overlay */
-.v-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;opacity:0;transition:opacity 0.2s;pointer-events:none}
-.video-card:hover .v-play-overlay{opacity:1}
-.v-play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;pointer-events:all;cursor:pointer;transition:background 0.18s}
-.v-play-btn:hover{background:rgba(255,255,255,0.25)}
 
 .img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .img-item{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);aspect-ratio:1/1;transition:border-color 0.22s,transform 0.22s;contain:layout paint}
@@ -920,11 +893,11 @@ function applyLang(l){
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
 
 const VIDEOS = [
-  { label: 'Hyper Theme',       price: '€25', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1496171388694691920/Hyper_Theme.mp4?ex=69ff5330&is=69fe01b0&hm=9555eb8b0603010fc8c8a9fd10fdd87968cd8f86cf114fa4bc18c6d4b540b0e7&' },
-  { label: 'ClassiX Theme',     price: '€20', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1439457749636223118/ClassiX_Theme_II_Engine_X.mp4?ex=69ff533f&is=69fe01bf&hm=3227cadaf1393f304bb63f250ddb00b6ec3587fe362b313e3a341108fea5e3f1&' },
-  { label: 'Syndicate Theme',   price: '€20', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1434973542109155489/Syndicate_Project.mp4?ex=69fed500&is=69fd8380&hm=bced2a4591a49dda2ff0a0d4dff52b03f24c616aa9c46f2c57a36267e34d9d5f&' },
-  { label: 'ResellX Theme',     price: '€25', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1431031664112435231/ResellX.mp4?ex=69fefe58&is=69fdacd8&hm=7623dcee3c011b32ecb9ecfffb7dd5f94b3b3ce39374d50be61f956df4e0634a&' },
-  { label: 'Modern Pro X Theme',price: '€25', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1403205430569865236/Modern_Pro_X_Theme.mp4?ex=69ff46a4&is=69fdf524&hm=6124ccaa85aa9213930a47888cbc821183632728442b20b6693db48e5d84835e&' },
+  { label: 'Hyper Theme',        price: '€25', yt: 'pVNz3oTB2YQ' },
+  { label: 'ClassiX Theme II',   price: '€20', yt: 'F_UiPaiVmp8' },
+  { label: 'Syndicate Theme',    price: '€20', yt: 'vvhHx-TnEjc' },
+  { label: 'ResellX Theme',      price: '€25', yt: 'NrOtIspcuhE' },
+  { label: 'Modern Pro X Theme', price: '€25', yt: 'sxTMz8pZJis' },
 ];
 
 function buildVideoGrid() {
@@ -935,58 +908,13 @@ function buildVideoGrid() {
     card.innerHTML = `
       <span class="v-label">${v.label}</span>
       <span class="v-price">${v.price}</span>
-      <video
-        src="${v.src}"
-        preload="metadata"
-        muted
-        playsinline
-        loop
-        controlsList="nodownload nofullscreen"
-        disablePictureInPicture
-        oncontextmenu="return false;"
-      ></video>
-      <div class="v-play-overlay">
-        <div class="v-play-btn"><i class="fa-solid fa-play"></i></div>
-      </div>
+      <iframe
+        src="https://www.youtube.com/embed/${v.yt}?autoplay=0&controls=1&modestbranding=1&rel=0&loop=1&playlist=${v.yt}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
     `;
-
-    const video = card.querySelector('video');
-    const playBtn = card.querySelector('.v-play-btn');
-    const icon = playBtn.querySelector('i');
-
-    // Toggle play/pause on click of overlay btn
-    playBtn.addEventListener('click', e => {
-      e.stopPropagation();
-      if (video.paused) {
-        video.play().catch(() => {});
-        icon.className = 'fa-solid fa-pause';
-      } else {
-        video.pause();
-        icon.className = 'fa-solid fa-play';
-      }
-    });
-
-    // Auto-play on hover, pause on leave
-    card.addEventListener('mouseenter', () => {
-      video.play().then(() => {
-        icon.className = 'fa-solid fa-pause';
-      }).catch(() => {});
-    });
-    card.addEventListener('mouseleave', () => {
-      video.pause();
-      icon.className = 'fa-solid fa-play';
-    });
-
-    // Handle load error gracefully
-    video.addEventListener('error', () => {
-      video.style.display = 'none';
-      const fb = document.createElement('div');
-      fb.className = 'video-fallback';
-      fb.style.display = 'flex';
-      fb.innerHTML = `<i class="fa-solid fa-video-slash" style="font-size:22px;opacity:0.3"></i><span>Preview not available — see Discord</span>`;
-      card.appendChild(fb);
-    });
-
     grid.appendChild(card);
   });
 }
