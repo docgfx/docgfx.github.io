@@ -41,7 +41,6 @@
 }
 html{scroll-behavior:smooth}
 
-/* ── CUSTOM CURSOR ── */
 *{cursor:none!important}
 #custom-cursor{
   position:fixed;
@@ -98,7 +97,6 @@ h1 em{font-style:normal;color:var(--muted)}
 .scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,transparent,var(--muted));animation:sline 2.2s ease-in-out infinite}
 @keyframes sline{0%,100%{opacity:0}50%{opacity:1}}
 
-/* ── GET IN TOUCH MODAL ── */
 .contact-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(12px);padding:1rem}
 .contact-modal-overlay.open{display:flex}
 .contact-modal{background:#0f0f0f;border:1px solid var(--border-h);border-radius:22px;padding:36px;width:100%;max-width:420px;position:relative;animation:fadeUp 0.3s ease both}
@@ -146,7 +144,6 @@ h1 em{font-style:normal;color:var(--muted)}
 .sub-panel.active{display:block}
 .sub-section-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;margin-top:4px}
 
-/* ── VIDEO GRID (fixed) ── */
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .video-card{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:border-color 0.22s,transform 0.22s}
 .video-card:hover{border-color:var(--border-h);transform:translateY(-3px)}
@@ -431,7 +428,6 @@ footer a:hover{color:#fff}
 </head>
 <body>
 
-<!-- Custom cursor dot -->
 <div id="custom-cursor"></div>
 
 <nav>
@@ -461,12 +457,12 @@ footer a:hover{color:#fff}
     <h1>Doc<em>GFX</em></h1>
     <p class="hero-sub" data-t="heroSub">Websites · Logos · Banners · Thumbnails · Products</p>
     <div class="hero-actions">
-      <!-- See My Work → scrolls to portfolio -->
+      
       <a href="#sec-websites" class="btn-primary" onclick="document.querySelector('#sec-websites').scrollIntoView({behavior:'smooth'});return false;">
         <i class="fa-solid fa-arrow-down" style="font-size:10px"></i>
         <span data-t="seeMyWork">See My Work</span>
       </a>
-      <!-- Get in Touch → opens contact modal -->
+      
       <button class="btn-ghost" id="getInTouchBtn">
         <i class="fa-regular fa-paper-plane" style="font-size:10px"></i>
         <span data-t="getInTouch">Get in Touch</span>
@@ -476,7 +472,6 @@ footer a:hover{color:#fff}
   <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
 </section>
 
-<!-- GET IN TOUCH MODAL -->
 <div class="contact-modal-overlay" id="contactModal">
   <div class="contact-modal">
     <button class="contact-modal-close" id="contactModalClose"><i class="fa-solid fa-xmark"></i></button>
@@ -495,7 +490,7 @@ footer a:hover{color:#fff}
         <div class="contact-link-icon generic"><i class="fa-brands fa-discord"></i></div>
         <div class="contact-link-text">
           <span class="contact-link-label" data-t="contactDmLabel">Direct Message</span>
-          <span class="contact-link-value" id="contactDiscordTag">@doc.gfx</span>
+          <span class="contact-link-value" id="contactDiscordTag">@oe1h</span>
         </div>
         <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;color:var(--muted);margin-left:auto"></i>
       </a>
@@ -510,7 +505,7 @@ footer a:hover{color:#fff}
         <div class="contact-link-icon generic"><i class="fa-solid fa-earth-europe"></i></div>
         <div class="contact-link-text">
           <span class="contact-link-label" data-t="contactLocationLabel">Based in</span>
-          <span class="contact-link-value" data-t="contactLocationValue">Germany / Europe</span>
+          <span class="contact-link-value" data-t="contactLocationValue">Austria / Europe</span>
         </div>
       </div>
     </div>
@@ -537,7 +532,7 @@ footer a:hover{color:#fff}
   <div class="section-body">
     <div style="height:32px"></div>
     <div class="video-grid" id="videoGrid">
-      <!-- Videos are injected by JS to avoid CORS/autoplay issues -->
+      
     </div>
   </div>
 </section>
@@ -833,7 +828,7 @@ footer a:hover{color:#fff}
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-// ── CUSTOM CURSOR ──
+
 (function(){
   const cursor = document.getElementById('custom-cursor');
   if (!cursor) return;
@@ -851,13 +846,11 @@ footer a:hover{color:#fff}
   });
 })();
 
-// ── CONTACT MODAL ──
 const contactModal = document.getElementById('contactModal');
 document.getElementById('getInTouchBtn').addEventListener('click', () => contactModal.classList.add('open'));
 document.getElementById('contactModalClose').addEventListener('click', () => contactModal.classList.remove('open'));
 contactModal.addEventListener('click', e => { if (e.target === contactModal) contactModal.classList.remove('open'); });
 
-// ── TRANSLATIONS ──
 const DISCORD_CLIENT_ID='1497683597077778493';
 const ALLOWED_USER_ID='1294570988788518975';
 const REDIRECT_URI=window.location.origin+window.location.pathname;
@@ -870,7 +863,7 @@ const T={
     joinDiscord:"Join Discord",viewPortfolio:"View Portfolio",adminLink:"Admin",
     contactTitle:"Get in Touch",contactSub:"Reach out via Discord to order custom GFX or ask questions. Fast replies guaranteed.",
     contactDmLabel:"Direct Message",contactResponseLabel:"Response Time",contactResponseValue:"Usually within a few hours",
-    contactLocationLabel:"Based in",contactLocationValue:"Germany / Europe",
+    contactLocationLabel:"Based in",contactLocationValue:"Austria / Europe",
     statProjects:"Projects",statFrom:"Starting From",statThemes:"Themes",statRating:"Rating",
     secWebsites:"Websites",secWebsitesTitle:"Custom Website<br>Themes",
     secLogos:"Logos",secLogosTitle:"Brand Identity<br>& Logos",
@@ -896,7 +889,7 @@ const T={
     joinDiscord:"Discord beitreten",viewPortfolio:"Portfolio ansehen",adminLink:"Admin",
     contactTitle:"Kontakt",contactSub:"Schreib mir auf Discord um GFX zu bestellen oder Fragen zu stellen. Schnelle Antwort garantiert.",
     contactDmLabel:"Direktnachricht",contactResponseLabel:"Antwortzeit",contactResponseValue:"Meist innerhalb weniger Stunden",
-    contactLocationLabel:"Standort",contactLocationValue:"Deutschland / Europa",
+    contactLocationLabel:"Standort",contactLocationValue:"Österreich / Europa",
     statProjects:"Projekte",statFrom:"Ab Preis",statThemes:"Themes",statRating:"Bewertung",
     secWebsites:"Websites",secWebsitesTitle:"Individuelle<br>Website Themes",
     secLogos:"Logos",secLogosTitle:"Markenidentität<br>& Logos",
@@ -926,7 +919,6 @@ function applyLang(l){
 }
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
 
-// ── VIDEO CARDS (injected to avoid CORS/referrer issues) ──
 const VIDEOS = [
   { label: 'Hyper Theme',       price: '€25', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1496171388694691920/Hyper_Theme.mp4?ex=69ff5330&is=69fe01b0&hm=9555eb8b0603010fc8c8a9fd10fdd87968cd8f86cf114fa4bc18c6d4b540b0e7&' },
   { label: 'ClassiX Theme',     price: '€20', src: 'https://cdn.discordapp.com/attachments/1403170617972228208/1439457749636223118/ClassiX_Theme_II_Engine_X.mp4?ex=69ff533f&is=69fe01bf&hm=3227cadaf1393f304bb63f250ddb00b6ec3587fe362b313e3a341108fea5e3f1&' },
@@ -1000,7 +992,6 @@ function buildVideoGrid() {
 }
 buildVideoGrid();
 
-// ── FAQ ──
 document.getElementById('faqList').addEventListener('click',function(e){
   const btn=e.target.closest('.faq-question');
   if(!btn)return;
@@ -1010,7 +1001,6 @@ document.getElementById('faqList').addEventListener('click',function(e){
   if(!wasOpen)item.classList.add('open');
 });
 
-// ── TABS ──
 function initTabGroup(id){
   const c=document.getElementById(id);if(!c)return;
   c.addEventListener('click',function(e){
@@ -1296,7 +1286,6 @@ tryAutoLogin();
 loadDynamicGFX();
 applyLang('en');
 
-// ── MUSIC PLAYER ──
 let ytPlayer;
 let playerReady = false;
 let isPlaying = false;
