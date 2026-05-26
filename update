@@ -671,7 +671,6 @@ footer a:hover{color:#fff}
   </div>
 </section>
 <div class="divider"></div>
-
 <section class="section reveal" id="sec-reviews">
   <div class="section-header">
     <div>
@@ -680,6 +679,7 @@ footer a:hover{color:#fff}
     </div>
   </div>
   <div class="reviews-grid">
+
     <div class="review-card">
       <div class="review-stars">
         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -693,6 +693,91 @@ footer a:hover{color:#fff}
         </div>
       </div>
     </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <div class="review-text">"Won a nitro boost giveaway — amazing!"</div>
+      <div class="review-author">
+        <div class="review-avatar">AY</div>
+        <div>
+          <div class="review-name">ayasana</div>
+          <div class="review-type">Giveaway</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <div class="review-text">"Again a very good product box — share the server with your friends!"</div>
+      <div class="review-author">
+        <div class="review-avatar">31%</div>
+        <div>
+          <div class="review-name">31% Benjamin</div>
+          <div class="review-type">Product Box</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <div class="review-text">"A super chill guy — make sure you buy!"</div>
+      <div class="review-author">
+        <div class="review-avatar">DE</div>
+        <div>
+          <div class="review-name">Demon [flame]</div>
+          <div class="review-type">Product Box</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <div class="review-text">"Good stuff!"</div>
+      <div class="review-author">
+        <div class="review-avatar">CH</div>
+        <div>
+          <div class="review-name">Cheesy [CHEZ]</div>
+          <div class="review-type">Product Box</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <div class="review-text">"Some of the nicest product boxes I've seen this year — and also a really cool owner!"</div>
+      <div class="review-author">
+        <div class="review-avatar">SM</div>
+        <div>
+          <div class="review-name">smoke</div>
+          <div class="review-type">Product Box</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <div class="review-text">"Best guy — legit and can only recommend!"</div>
+      <div class="review-author">
+        <div class="review-avatar">EL</div>
+        <div>
+          <div class="review-name">elia</div>
+          <div class="review-type">Product Box</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 <div class="divider"></div>
