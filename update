@@ -525,10 +525,14 @@ footer a:hover{color:#fff}
   <div class="section-body">
     <div style="height:32px"></div>
     <div class="img-grid" id="grid-logos">
-      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/ws_logo.png" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
-      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Sellauth-Logo-EngineX.png" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Custom Logo</span></div></div>
-      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/VS-Xmas_no_bg.png" loading="lazy" alt="Christmas Logo"><div class="img-overlay"><span class="overlay-label">Christmas Logo</span></div></div>
-      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Final_Comp_2.gif" loading="lazy" alt="EngineX"><div class="img-overlay"><span class="overlay-label">EngineX Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Final_Comp.watermarked.gif" loading="lazy" alt="Final Comp"><div class="img-overlay"><span class="overlay-label">Final Comp</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Logo-no-BG.watermarked.png" loading="lazy" alt="Logo"><div class="img-overlay"><span class="overlay-label">Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/S_logo.watermarked.gif" loading="lazy" alt="S Logo"><div class="img-overlay"><span class="overlay-label">S Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/Sellauth-Logo.watermarked.png" loading="lazy" alt="Sellauth Logo"><div class="img-overlay"><span class="overlay-label">Sellauth Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/VS-Xmas.watermarked.png" loading="lazy" alt="VS Xmas"><div class="img-overlay"><span class="overlay-label">VS Xmas</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/logo2.watermarked.png" loading="lazy" alt="Logo 2"><div class="img-overlay"><span class="overlay-label">Logo 2</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/n.watermarked.gif" loading="lazy" alt="N Logo"><div class="img-overlay"><span class="overlay-label">N Logo</span></div></div>
+      <div class="img-item"><img src="https://raw.githubusercontent.com/docgfx/docgfx.github.io/refs/heads/main/image/ws_logo.watermarked.png" loading="lazy" alt="WS Logo"><div class="img-overlay"><span class="overlay-label">WS Logo</span></div></div>
     </div>
   </div>
 </section>
