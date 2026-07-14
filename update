@@ -227,7 +227,6 @@ h1 em{font-style:normal;color:var(--muted)}
 .faq-item.open .faq-answer{max-height:300px}
 .faq-divider{height:1px;background:var(--border)}
 
-/* Reviews */
 .reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .review-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;transition:border-color 0.2s}
 .review-card:hover{border-color:var(--border-h)}
@@ -430,12 +429,10 @@ footer a:hover{color:#fff}
     <h1>Doc<em>GFX</em></h1>
     <p class="hero-sub" data-t="heroSub">Websites · Logos · Banners · Thumbnails · Products</p>
     <div class="hero-actions">
-      
       <a href="#sec-websites" class="btn-primary" onclick="document.querySelector('#sec-websites').scrollIntoView({behavior:'smooth'});return false;">
         <i class="fa-solid fa-arrow-down" style="font-size:10px"></i>
         <span data-t="seeMyWork">See My Work</span>
       </a>
-      
       <button class="btn-ghost" id="getInTouchBtn">
         <i class="fa-regular fa-paper-plane" style="font-size:10px"></i>
         <span data-t="getInTouch">Get in Touch</span>
@@ -451,11 +448,11 @@ footer a:hover{color:#fff}
     <h3 data-t="contactTitle">Get in Touch</h3>
     <p class="contact-modal-sub" data-t="contactSub">Reach out via Discord to order custom GFX or ask questions. Fast replies guaranteed.</p>
     <div class="contact-links">
-      <a href="https://discord.gg/docgfx" class="contact-link-item" target="_blank" rel="noopener">
+      <a href="https://discord.gg/SNHbWq7hPt" class="contact-link-item" target="_blank" rel="noopener">
         <div class="contact-link-icon discord"><i class="fa-brands fa-discord"></i></div>
         <div class="contact-link-text">
           <span class="contact-link-label">Discord Server</span>
-          <span class="contact-link-value">discord.gg/docgfx</span>
+          <span class="contact-link-value">discord.gg/SNHbWq7hPt</span>
         </div>
         <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;color:var(--muted);margin-left:auto"></i>
       </a>
@@ -504,9 +501,7 @@ footer a:hover{color:#fff}
   </button>
   <div class="section-body">
     <div style="height:32px"></div>
-    <div class="video-grid" id="videoGrid">
-      
-    </div>
+    <div class="video-grid" id="videoGrid"></div>
   </div>
 </section>
 <div class="divider"></div>
@@ -518,7 +513,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secLogosTitle">Brand Identity<br>& Logos</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €7.5</a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €7.5</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -545,7 +540,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secBannersTitle">Banners</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €6.5</span></a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="bannerFromPrice">from €6.5</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -590,7 +585,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secProductsTitle">Product<br>Artwork</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> <span data-t="productFromPrice">from €3</span></a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -625,7 +620,7 @@ footer a:hover{color:#fff}
       <h2 class="section-title" data-t="secThumbsTitle">YouTube<br>Thumbnails</h2>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://discord.gg/docgfx" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
+      <a href="https://discord.gg/SNHbWq7hPt" class="price-tag" onclick="event.stopPropagation()"><i class="fa-brands fa-discord" style="font-size:10px"></i> €5</a>
       <div class="section-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
   </button>
@@ -675,6 +670,7 @@ footer a:hover{color:#fff}
   </div>
 </section>
 <div class="divider"></div>
+
 <section class="section reveal" id="sec-reviews">
   <div class="section-header">
     <div>
@@ -683,105 +679,41 @@ footer a:hover{color:#fff}
     </div>
   </div>
   <div class="reviews-grid">
-
     <div class="review-card">
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="review-text">"Best product boxes I've ever seen"</div>
-      <div class="review-author">
-        <div class="review-avatar">31%</div>
-        <div>
-          <div class="review-name">31% Raz</div>
-          <div class="review-type">Product Box</div>
-        </div>
-      </div>
+      <div class="review-author"><div class="review-avatar">31%</div><div><div class="review-name">31% Raz</div><div class="review-type">Product Box</div></div></div>
     </div>
-
     <div class="review-card">
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="review-text">"Won a nitro boost giveaway — amazing!"</div>
-      <div class="review-author">
-        <div class="review-avatar">AY</div>
-        <div>
-          <div class="review-name">ayasana</div>
-          <div class="review-type">Giveaway</div>
-        </div>
-      </div>
+      <div class="review-author"><div class="review-avatar">AY</div><div><div class="review-name">ayasana</div><div class="review-type">Giveaway</div></div></div>
     </div>
-
     <div class="review-card">
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="review-text">"Again a very good product box — share the server with your friends!"</div>
-      <div class="review-author">
-        <div class="review-avatar">31%</div>
-        <div>
-          <div class="review-name">31% Benjamin</div>
-          <div class="review-type">Product Box</div>
-        </div>
-      </div>
+      <div class="review-author"><div class="review-avatar">31%</div><div><div class="review-name">31% Benjamin</div><div class="review-type">Product Box</div></div></div>
     </div>
-
     <div class="review-card">
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="review-text">"A super chill guy — make sure you buy!"</div>
-      <div class="review-author">
-        <div class="review-avatar">DE</div>
-        <div>
-          <div class="review-name">Demon [flame]</div>
-          <div class="review-type">Product Box</div>
-        </div>
-      </div>
+      <div class="review-author"><div class="review-avatar">DE</div><div><div class="review-name">Demon [flame]</div><div class="review-type">Product Box</div></div></div>
     </div>
-
     <div class="review-card">
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="review-text">"Good stuff!"</div>
-      <div class="review-author">
-        <div class="review-avatar">CH</div>
-        <div>
-          <div class="review-name">Cheesy [CHEZ]</div>
-          <div class="review-type">Product Box</div>
-        </div>
-      </div>
+      <div class="review-author"><div class="review-avatar">CH</div><div><div class="review-name">Cheesy [CHEZ]</div><div class="review-type">Product Box</div></div></div>
     </div>
-
     <div class="review-card">
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="review-text">"Some of the nicest product boxes I've seen this year — and also a really cool owner!"</div>
-      <div class="review-author">
-        <div class="review-avatar">SM</div>
-        <div>
-          <div class="review-name">smoke</div>
-          <div class="review-type">Product Box</div>
-        </div>
-      </div>
+      <div class="review-author"><div class="review-avatar">SM</div><div><div class="review-name">smoke</div><div class="review-type">Product Box</div></div></div>
     </div>
-
     <div class="review-card">
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
+      <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="review-text">"Best guy — legit and can only recommend!"</div>
-      <div class="review-author">
-        <div class="review-avatar">EL</div>
-        <div>
-          <div class="review-name">elia</div>
-          <div class="review-type">Product Box</div>
-        </div>
-      </div>
+      <div class="review-author"><div class="review-avatar">EL</div><div><div class="review-name">elia</div><div class="review-type">Product Box</div></div></div>
     </div>
-
   </div>
 </section>
 <div class="divider"></div>
@@ -809,13 +741,13 @@ footer a:hover{color:#fff}
 <div class="cta reveal">
   <h2 class="cta-title" data-t="ctaTitle">Ready for your next<br><span style="color:var(--muted)">Project?</span></h2>
   <p class="cta-sub" data-t="ctaSub">Join the Discord and order your custom GFX directly.</p>
-  <a href="https://discord.gg/docgfx" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
+  <a href="https://discord.gg/SNHbWq7hPt" class="btn-primary" style="font-size:13px;padding:14px 32px"><i class="fa-brands fa-discord"></i> <span data-t="joinDiscord">Join Discord</span></a>
 </div>
 
 <footer>
   <span>© 2025 DocGFX</span>
   <span style="color:var(--border-h)">·</span>
-  <a href="https://discord.gg/docgfx"><i class="fa-brands fa-discord"></i> Discord</a>
+  <a href="https://discord.gg/SNHbWq7hPt"><i class="fa-brands fa-discord"></i> Discord</a>
   <span style="color:var(--border-h)">·</span>
   <button class="admin-link" id="adminBtnFooter" style="background:none;border:none;font-size:11px;padding:0;gap:4px"><i class="fa-solid fa-lock" style="font-size:9px"></i> Admin</button>
 </footer>
@@ -942,7 +874,7 @@ const T={
     faq1q:"How long does an order take?",faq1a:"Most orders are delivered within 24–48 hours. Complex projects like animated banners may take a bit longer. Website themes will get delivered instantly. You'll always get an estimated delivery time when placing your order.",
     faq2q:"What payment methods are accepted?",faq2a:"PayPal (Friends & Family) and crypto are accepted. Payment is required upfront before work begins.",
     ctaTitle:"Ready for your next<br><span style='color:var(--muted)'>Project?</span>",ctaSub:"Join the Discord and order your custom GFX directly.",
-    bannerFromPrice:"from 6.5",productFromPrice:"from €3",
+    bannerFromPrice:"from €6.5",productFromPrice:"from €3",
     subServerBanners:"Server Banners",subProfileBanners:"Profile Banners",subEmbedBanners:"Embed Banners",subSignatures:"Signatures",subProductBoxes:"Product Boxes",subProductCards:"Product Cards"
   },
   de:{
